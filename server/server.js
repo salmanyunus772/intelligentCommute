@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const port= process.env.PORT || 3001;
 const studentRouter = require('./routers/studentRouter');
 const driverRouter =require('./routers/driverRouter');
 const adminRouter = require('./routers/adminRouter');
@@ -20,6 +21,6 @@ app.use(express.static('imageFolder'));
 
 
 app.use(errorhandler());
-app.listen(3001,()=>{
+app.listen(port,()=>{
     console.log('Server started at port 3001');
 })
