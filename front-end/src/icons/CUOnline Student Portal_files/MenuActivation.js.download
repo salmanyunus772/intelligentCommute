@@ -1,0 +1,29 @@
+$(document).ready(function () {
+    //debugger;
+    //Main Menu Selection Option.
+    if (window.location.href.indexOf("Courses") > -1) { $("#DashBoard").addClass(' selected'); $("#Dash_Board").addClass(' selected'); }
+    else if (window.location.href.indexOf("RegistrationCard") > -1) { $("#RegistrationCard").addClass(' selected'); $("#Registration_Card").addClass(' selected'); }
+    else if (window.location.href.indexOf("CourseRegistration") > -1) { $("#CourseRegistration").addClass(' selected'); $("#Course_Registration").addClass(' selected'); }
+    else if (window.location.href.indexOf("Datesheet") > -1) { $("#Datesheet").addClass(' selected'); $("#Date_sheet").addClass(' selected'); }
+    else if (window.location.href.indexOf("Fees") > -1) { $("#Fees").addClass(' selected'); $("#Fees").addClass(' selected'); }
+    else if (window.location.href.indexOf("Profile") > -1) { $("#MyProfile").addClass(' selected'); $("#My_Profile").addClass(' selected'); }
+    else if (window.location.href.indexOf("ResultCard") > -1) { $("#ResultCard").addClass(' selected'); $("#Result_Card").addClass(' selected'); }
+    //else if (window.location.href.indexOf("SupportSystem") > -1) { $("#SupportSystem").addClass(' selected'); $("#SupportSystem").addClass(' selected'); }
+    else if (window.location.href.indexOf("Sign_out") > -1) { $("#SignOut").addClass(' selected'); $("#Sign_Out").addClass(' selected'); }
+    else { $("#DashBoard").addClass(' selected'); $("#Dash_Board").addClass(' selected'); }
+
+    //Sub Menu Selection Option.
+    
+    if (window.location.href.indexOf("Announcements") > -1) { $("li#id_course_announcements").addClass(' selected'); }
+    else if (window.location.href.indexOf("MarksSummary") > -1) { $("li#id_marks_summary").addClass(' selected'); }
+    else if (window.location.href.indexOf("Attendance") > -1) { $("li#id_Attendance").addClass(' selected'); }
+    else if (window.location.href.indexOf("LearningResources") > -1) { $("li#id_learning_resources").addClass(' selected'); }
+    else if (window.location.href.indexOf("Assignments") > -1) { $("li#id_assigments").addClass(' selected'); }
+    else if (window.location.href.indexOf("MDB") > -1) { $("li#id_mdb").addClass(' selected'); }
+    else if (window.location.href.indexOf("GDB") > -1) { $("li#id_gdb").addClass(' selected'); }
+    else if (window.location.href.indexOf("Quizzes") > -1) { $("li#id_quizzes").addClass(' selected'); }
+    else if (window.location.href.indexOf("VideoLessons") > -1) { $("li#id_live_sessions").addClass(' selected'); }
+    else if (window.location.href.indexOf("LectureContents") > -1) { $("li#id_lecture_content").addClass(' selected'); }
+    else if (window.location.href.indexOf("CourseInformation") > -1) { $("li#id_course_information").addClass(' selected'); }
+    else { $("li#id_course_announcements").addClass(' selected'); }
+});

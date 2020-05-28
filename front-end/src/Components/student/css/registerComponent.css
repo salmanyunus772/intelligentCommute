@@ -1,0 +1,268 @@
+@media only screen and (min-width: 750px){
+
+.registerFormContainer{
+    display: grid;
+    grid-template-columns: .2fr .8fr;
+    width:100%;
+    grid-gap: 10px;
+    
+}
+.registerH2{
+    font-weight: 100;
+    font-size: 30px;
+    color:#063a79;
+}
+.registerHeading{
+    text-align: center;
+}
+
+
+
+
+.registerInput {
+    border: 1px solid #4195fc;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    width: 100%;
+
+    text-align: center;
+    -webkit-box-shadow: 0px 0px 10px #4195fc;
+    -moz-box-shadow: 0px 0px 10px #4195fc;
+    box-shadow: 0px 0px 10px #4195fc;
+
+}
+
+
+.registerSelect {
+    text-align: center;
+    text-align-last: center;
+}
+.registerOption {
+    background: white;
+}
+
+
+.registerSubmit {
+    border: 1px solid #4195fc;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: 0px 0px 10px #4195fc;
+    -moz-box-shadow: 0px 0px 10px #4195fc;
+    box-shadow: 0px 0px 10px #4195fc;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    min-width: 70px;
+    width: 40%;
+    background: rgb(38, 167, 172);
+    color: white;
+    -webkit-transition: background .7s;
+    -moz-transition: background .7s;
+    -ms-transition: background .7s;
+    -o-transition: background .7s;
+    transition: background .7s;
+    height: 40px;
+    margin: 0 auto;
+}
+
+.registerSubmit:hover {
+    border: 1px solid #0070f8;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    
+    border-radius: 4px;
+    -webkit-box-shadow: 0px 0px 10px #4195fc;
+    -moz-box-shadow: 0px 0px 10px #4195fc;
+    box-shadow: 0px 0px 10px #4195fc;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    min-width: 70px;
+    background: rgb(158, 5, 163);
+}
+.registerInputText,.registerInputPass{
+    width: 80%;
+    margin: 0 auto;
+    color: white;
+    background:rgba(1, 44, 109, 0.5);
+    -webkit-transition: background .6s;
+    -moz-transition: background .6s;
+    -ms-transition: background .6s;
+    -o-transition: background .6s;
+    transition: background .6s;
+    height: 40px;
+
+}
+.registerInputText:focus,.registerInputPass:focus{
+    color:black;
+    background:rgb(255, 255, 255);
+
+
+}
+.registerForm{
+    display: grid;
+    grid-template-rows: 50px 50px 50px 50px;
+    grid-gap: 15px;
+    
+}
+
+.registerLabel{
+    margin-left: 20%;
+    color:#063a79;
+}
+.registerSubmitContainer{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+.dateUnstyled {
+    -webkit-appearance: none;
+}
+.dateUnstyled::-webkit-inner-spin-button {
+    display: none;
+    -webkit-appearance: none;
+}
+
+.dateUnstyled::-webkit-calendar-picker-indicator{
+    background-color: transparent;
+}
+label{
+    color:#063a79;
+    margin-top: 5px;
+}
+}
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 750px){
+
+    .registerFormContainer{
+        display: grid;
+        grid-template-columns: 1fr;
+        width:100%;
+        text-align: center;
+        grid-gap: 10px;
+    }
+    .registerH2{
+        font-weight: 100;
+        font-size: 30px;
+        color:#063a79
+    }
+    .registerHeading{
+        text-align: center;
+    }
+    
+    
+    
+    
+    .registerInput {
+        border: 1px solid #4195fc;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+        width: 100%;
+    
+        text-align: center;
+        -webkit-box-shadow: 0px 0px 10px #4195fc;
+        -moz-box-shadow: 0px 0px 10px #4195fc;
+        box-shadow: 0px 0px 10px #4195fc;
+    
+    }
+    
+    
+    .registerSelect {
+        text-align: center;
+        text-align-last: center;
+    }
+    .registerOption {
+        background: white;
+    }
+  
+    
+    .registerSubmit {
+        border: 1px solid #4195fc;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+        -webkit-box-shadow: 0px 0px 10px #4195fc;
+        -moz-box-shadow: 0px 0px 10px #4195fc;
+        box-shadow: 0px 0px 10px #4195fc;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bold;
+        min-width: 70px;
+        width: 40%;
+        background: rgb(38, 167, 172);
+        color: white;
+        -webkit-transition: background .7s;
+        -moz-transition: background .7s;
+        -ms-transition: background .7s;
+        -o-transition: background .7s;
+        transition: background .7s;
+        height: 40px;
+        margin: 50px;
+    }
+    
+    .registerSubmit:hover {
+        border: 1px solid #0070f8;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        
+        border-radius: 4px;
+        -webkit-box-shadow: 0px 0px 10px #4195fc;
+        -moz-box-shadow: 0px 0px 10px #4195fc;
+        box-shadow: 0px 0px 10px #4195fc;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bold;
+        min-width: 70px;
+        background: rgb(158, 5, 163);
+    }
+    .registerInputText,.registerInputPass{
+        width: 80%;
+        margin: 0 auto;
+        color: white;
+        background:rgba(1, 44, 109, 0.5);
+        -webkit-transition: background .6s;
+        -moz-transition: background .6s;
+        -ms-transition: background .6s;
+        -o-transition: background .6s;
+        transition: background .6s;
+        height: 40px;
+    
+    }
+    .registerInputText:focus,.registerInputPass:focus{
+        color:black;
+        background:rgb(255, 255, 255);
+    
+    
+    }
+    .registerForm{
+        display: grid;
+        grid-template-rows: 50px 50px 50px 50px;
+        grid-gap: 15px;
+        
+    }
+    
+
+    .registerSubmitContainer{
+        /* margin-top: 30px; */
+        margin-bottom: 30px;
+        text-align: center;
+    }
+    .dateUnstyled {
+        -webkit-appearance: none;
+    }
+    .dateUnstyled::-webkit-inner-spin-button {
+        display: none;
+        -webkit-appearance: none;
+    }
+    
+    .dateUnstyled::-webkit-calendar-picker-indicator{
+        background-color: transparent;
+    }
+
+    }
