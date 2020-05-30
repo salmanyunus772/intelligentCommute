@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Intelligent Commuting</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="noticeboard"><u>NOTICEBOARD</u></string>
+    <string name="forgetPassword"><u>FORGET PASSWORD</u></string>
+    <string name="signup"><u>SIGNUP</u></string>
+    <string name="signin"><u>SIGNIN</u></string>
+    <string name="guestStudent"><u>GUEST STUDENT</u></string>
+    <string name="Open"><u>Open</u></string>
+    <string name="Close"><u>Close</u></string>
+    <string-array name="cs">
+        <item>Complain</item>
+        <item>Suggestion</item>
+    </string-array>
+    <string-array name="lf">
+        <item>Lost</item>
+        <item>Found</item>
+    </string-array>
+    <string-array name="stops">
+        <item>Saddar, Rawalpindi</item>
+        <item>Committee Chowk Stop, Rawalpindi</item>
+        <item>chandni chowk murree road rawalpindi</item>
+        <item>Rehmanabad</item>
+        <item>6th Road, Rawalpindi</item>
+        <item>I.J.P. Road, Rawalpindi</item>
+    </string-array>
+</resources>

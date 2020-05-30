@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f0ffff"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="700dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:text="Intelligent Commuting"
+        android:textColor="#FFFFFF"
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:paddingTop="80dp"
+        android:paddingBottom="50dp"
+        android:background="#0E4BEF" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="210dp"
+        android:text="A Bus Portal for Students and Drivers"
+        android:textColor="#ff0000"
+        android:textAlignment="center"
+        android:textSize="19dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp" />
+
+        <RelativeLayout
+            android:layout_width="320dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="290dp"
+            android:layout_marginLeft="45dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/border" >
+
+            <TextView
+                android:layout_width="130dp"
+                android:layout_height="70dp"
+                android:layout_marginLeft="95dp"
+                android:text="@string/noticeboard"
+                android:textColor="#ff0000"
+                android:textAlignment="center"
+                android:textSize="19dp"
+                android:textStyle="bold"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp" />
+
+            <ListView
+                android:id="@+id/news"
+                android:layout_width="300dp"
+                android:layout_height="140dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginLeft="10dp"
+                android:nestedScrollingEnabled="true" />
+
+        </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="500dp" >
+
+    <Button
+        android:id="@+id/students"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:text="Students"
+        android:textSize="20dp"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/roundbutton" />
+
+    <Button
+        android:id="@+id/drivers"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:text="Drivers"
+        android:layout_marginLeft="10dp"
+        android:textSize="20dp"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/roundbutton" />
+
+    </LinearLayout>
+
+    </RelativeLayout>
+
+</ScrollView>
