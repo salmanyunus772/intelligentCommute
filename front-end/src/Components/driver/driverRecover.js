@@ -1,39 +1,38 @@
 import React from "react";
 import axios from "axios";
 import "./css/recover.css";
-import RecoverComponent from "./recoverComponent";
 import ReactNotification from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
 import { store } from "react-notifications-component";
-import Loading from "./Loading";
+import Loading from "./Loadingdriver";
 import { Link } from "react-router-dom";
+import RecoverComp from "../driver/RecoverComp";
 
-export default class Recover extends React.Component {
+export default class driverRecover extends React.Component {
   constructor() {
     super();
     this.onSubmit = this.onSubmit.bind(this);
-    this.onChangeEmail = this.onChangeEmail.bind(this);
+    this.onChangeContact = this.onChangeContact.bind(this);
     this.onChangePassword=this.onChangePassword.bind(this);
     this.defaultPage = this.defaultPage.bind(this);
     this.emialSentPage = this.emialSentPage.bind(this);
-    this.verifyEmail = this.verifyEmail.bind(this);
+    this.verifyContact = this.verifyContact.bind(this);
     this.verifyPassword=this.verifyPassword.bind(this);
     
 
     this.state = {
-      email: "",
+      contact: "",
       password:"",
       emailSent: false,
       loading: false
     };
   }
-  verifyEmail(){
+  verifyContact(){
     //eslint-disable-next-line
-    var regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (!regex.test(String(this.state.email).toLowerCase())) {
-      return false
-    }
-    return true
+    if(this.state.contact.length<11){
+        return false;
+      }
+      return true
   }
   verifyPassword(){
     if(this.state.password.length<8){
@@ -43,12 +42,12 @@ export default class Recover extends React.Component {
   }
 
   onSubmit() {
-    if(this.verifyEmail()){
+    if(this.verifyContact()){
       if(this.verifyPassword()){      
       this.setState({ loading: true  });
       axios
-        .post("http://localhost:3000/api/student/newrecover", {
-          email:this.state.email,
+        .post("http://localhost:3000/api/driver/recover", {
+          contact:this.state.contact,
           password:this.state.password
         })
         .then(response => {
@@ -71,7 +70,7 @@ export default class Recover extends React.Component {
         console.log(error);
         this.setState({loading:false})
       store.addNotification({
-          title: "No student with this Email ",
+          title: "No Driver with this Number ",
           message: "Not Sent",
           type: "danger",
           insert: "top",
@@ -104,7 +103,7 @@ export default class Recover extends React.Component {
 
       else{
         store.addNotification({
-          title: "Email Not Valid",
+          title: "Number Not Valid",
           message: "try again",
           type: "danger",
           insert: "top",
@@ -118,9 +117,9 @@ export default class Recover extends React.Component {
           });
       }
   }
-  onChangeEmail(e) {
+  onChangeContact(e) {
     
-    this.setState({ email: e.target.value });
+    this.setState({ contact: e.target.value });
   }
   onChangePassword(e) {  
     this.setState({ password: e.target.value });
@@ -146,18 +145,18 @@ export default class Recover extends React.Component {
             <h2 className="recoverH2">Recover Account</h2>
           </div>
 
-          <span>Enter your Email & Password </span>
+          <span>Enter your Contact & Password </span>
           <fieldset  disabled={isDisabled} >
-            <RecoverComponent
-              onChangeEmail={this.onChangeEmail}
+            <RecoverComp
+              onChangeContact={this.onChangeContact}
               onChangePassword={this.onChangePassword}
               onSubmit={this.onSubmit}
             />
             <div className="recoverFormBottom">
-            <Link to="/student/register" className="recoverSignup recoverA">
+            <Link to="/driver/registerdriver" className="recoverSignup recoverA">
               Sign up
             </Link>
-            <Link to="/student/login" className="recoverLogin recoverA">
+            <Link to="/driver/login" className="recoverLogin recoverA">
               Login
             </Link>
           </div>

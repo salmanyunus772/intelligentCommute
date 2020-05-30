@@ -112,6 +112,9 @@ export default class SigninDriver extends React.Component {
                 <Link to="/driver/registerdriver" className="signInSignup signInA">
                   Sign up
               </Link>
+              <Link to="/driver/recover" className="signInForget signInA">
+                  Forgot Password
+              </Link>
               </div>
               
                 </div>

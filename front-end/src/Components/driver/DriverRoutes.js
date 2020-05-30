@@ -11,6 +11,7 @@ import Studentchart from './Studentchart';
 import StudentPanel from '../student/StudentPanel';
 import Notifications from "../student/homeComponents/Notifications"
 import { Route } from "react-router-dom";
+import driverRecover from "../driver/driverRecover";
 
 export default class DriverRoutes extends React.Component{
     render(){
@@ -18,6 +19,7 @@ export default class DriverRoutes extends React.Component{
             <React.Fragment>
             <Route path="/driver/registerdriver" component={Registerdriver} />          
             <Route path="/driver/login" component={SigninDriver} />
+            <Route path="/driver/recover" component={driverRecover} />
   
              <React.Fragment>
               <Route

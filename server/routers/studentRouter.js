@@ -308,6 +308,31 @@ studentRouter.post("/login", (req, res, next) => {
 studentRouter.post("/getStudent", validate.token, (req, res, next) => {
   res.send(req.authData);
 });
+studentRouter.post("/newrecover", (req, res, next) => {
+  db.findStudentByEmail(req.body.email)
+    .then(doc => {
+      if (doc === null) {
+        res.status(400).json({ error: "Incorrect email and You cannot set your password" });
+      }
+      else{
+        db.recoverpassword(req.body.email,req.body.password).then(()=>{
+          console.log('Password updated');
+          res.json({message:'Password Updated'})
+        })
+          .catch(err => {
+            console.log(err);
+            res.status(400).json({ error:err });
+          }); 
+      }
+    }).catch(err => {
+      console.log(err);
+      res.status(400).json({ error: "Server Error" });
+    });
+  
+  
+});
+
+
 studentRouter.post("/recover",validate.recoveryEmail, (req, res, next) => {
   const newPass=utils.genPassword();
   const encryptedPass=utils.encryptPassword(newPass);

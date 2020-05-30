@@ -110,6 +110,31 @@ driverRouter.get('/viewSchedule',validate.token,(req,res)=>{
       res.status(400).json({ error: "Server Error" });
     });
 }); 
+driverRouter.post("/recover", (req, res, next) => {
+  db.findDriverByCell(req.body.contact)
+    .then(doc => {
+      if (doc === null) {
+        res.status(400).json({ error: " Number Not Valid and You cannot set your password" });
+      }
+      else{
+        db.recoverdriverpassword(req.body.contact,req.body.password).then(()=>{
+          console.log('Password updated');
+          res.json({message:'Password Updated'})
+        })
+          .catch(err => {
+            console.log(err);
+            res.status(400).json({ error:err });
+          }); 
+      }
+    }).catch(err => {
+      console.log(err);
+      res.status(400).json({ error: "Server Error" });
+    });
+  
+  
+});
+
+
 driverRouter.post("/AuthenticStdCount",(req,res) => {
   const cam_countedStd = parseInt(req.query.camera_count);
   console.log('ur camera count')

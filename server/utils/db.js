@@ -138,6 +138,21 @@ module.exports = {
       doc.save();
     });
   },
+  recoverpassword:(email,password)=>{
+    return Student.findOne({email:email},function(err,doc){
+      let newpwd=util.encryptPassword(password); 
+      doc.pass=newpwd;
+       doc.save();
+    });
+  },
+  recoverdriverpassword:(contact,password)=>{
+    return Driver.findOne({cell:contact},function(err,doc){
+      let newpwd=util.encryptPassword(password); 
+      doc.pass=newpwd;
+       doc.save();
+    });
+  },
+
   profileupdate: (reg,s_email,s_contact,s_stop)=>{
     return Student.findOne({reg:reg},function(err,doc){
      doc.email=s_email;
