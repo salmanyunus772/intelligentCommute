@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/profile"
+        android:title="My Profile"
+        android:icon="@drawable/ic_person_black_24dp">
+    </item>
+
+    <item
+        android:id="@+id/allowAccessLocation"
+        android:title="Allow Access Location"
+        android:icon="@drawable/ic_location_on_black_24dp">
+    </item>
+
+    <item
+        android:id="@+id/stopLocationSending"
+        android:title="Stop Location Sending"
+        android:icon="@drawable/ic_location_off_black_24dp">
+    </item>
+
+    <item
+        android:id="@+id/lostFound"
+        android:title="Lost Found"
+        android:icon="@drawable/icon2">
+    </item>
+
+    <item
+        android:id="@+id/complain"
+        android:title="Have Complains?"
+        android:icon="@drawable/icon3">
+    </item>
+
+    <item
+        android:id="@+id/viewComplains"
+        android:title="View Complains!"
+        android:icon="@drawable/ic_view_list_black_24dp">
+    </item>
+
+    <item
+        android:id="@+id/viewotherslostfoundposts"
+        android:title="View Lost Found Posts!"
+        android:icon="@drawable/ic_view_list_black_24dp">
+    </item>
+
+    <item
+        android:id="@+id/viewyourlostfoundpostsreplies"
+        android:title="View Lost Found Replies!"
+        android:icon="@drawable/ic_view_list_black_24dp">
+    </item>
+
+    <item
+        android:id="@+id/logout"
+        android:title="Logout"
+        android:icon="@drawable/icon4">
+    </item>
+
+</menu>

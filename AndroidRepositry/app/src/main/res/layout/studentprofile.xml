@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f0ffff" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="1000dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="Your Personal Details"
+        android:textAlignment="center"
+        android:textSize="40dp"
+        android:textColor="#063a79"
+        android:textStyle="bold"
+        android:paddingTop="20dp"
+        android:paddingBottom="25dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal" >
+
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="110dp"
+                android:text="First Name"
+                android:textSize="20dp"
+                android:textColor="#063a79"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:paddingTop="10dp"
+                android:paddingBottom="5dp" />
+
+            <TextView
+                android:id="@+id/fName"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="107dp"
+                android:background="@drawable/textviewborder"
+                android:textSize="15dp"
+                android:textColor="#063a79"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:padding="13dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal" >
+
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="170dp"
+                android:text="Last Name"
+                android:textSize="20dp"
+                android:textColor="#063a79"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:paddingTop="10dp"
+                android:paddingBottom="5dp" />
+
+            <TextView
+                android:id="@+id/lName"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="167dp"
+                android:background="@drawable/textviewborder"
+                android:textSize="15dp"
+                android:textColor="#063a79"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:padding="13dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="230dp"
+                android:text="Email"
+                android:textSize="20dp"
+                android:textColor="#063a79"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:paddingTop="10dp"
+                android:paddingBottom="5dp" />
+
+            <TextView
+                android:id="@+id/email"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="220dp"
+                android:background="@drawable/textviewborder"
+                android:textSize="15dp"
+                android:textColor="#063a79"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:padding="5dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal" >
+
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="290dp"
+                android:text="Registration Number"
+                android:textSize="20dp"
+                android:textColor="#063a79"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:paddingTop="10dp"
+                android:paddingBottom="5dp" />
+
+            <TextView
+                android:id="@+id/regNo"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="287dp"
+                android:background="@drawable/textviewborder"
+                android:textSize="15dp"
+                android:textColor="#063a79"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:padding="13dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal" >
+
+            <TextView
+               android:layout_width="200dp"
+               android:layout_height="50dp"
+               android:layout_marginTop="350dp"
+               android:text="Emergency Contact"
+               android:textSize="20dp"
+               android:textColor="#063a79"
+               android:textStyle="bold"
+               android:textAlignment="center"
+               android:padding="10dp" />
+
+            <TextView
+                android:id="@+id/eContact"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="347dp"
+                android:background="@drawable/textviewborder"
+                android:textSize="15dp"
+                android:textColor="#063a79"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:padding="13dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal" >
+
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="410dp"
+                android:text="Bus Stop"
+                android:textSize="20dp"
+                android:textColor="#063a79"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:paddingTop="10dp"
+                android:paddingBottom="5dp" />
+
+            <TextView
+                android:id="@+id/bStop"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="400dp"
+                android:background="@drawable/textviewborder"
+                android:textSize="15dp"
+                android:textColor="#063a79"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:padding="7dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal" >
+
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="470dp"
+                android:text="RFID Number"
+                android:textSize="20dp"
+                android:textColor="#063a79"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:paddingTop="10dp"
+                android:paddingBottom="5dp" />
+
+            <TextView
+                android:id="@+id/rfidNumber"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="467dp"
+                android:background="@drawable/textviewborder"
+                android:textSize="15dp"
+                android:textColor="#063a79"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:padding="13dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal" >
+
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="530dp"
+                android:text="Valid Before"
+                android:textSize="20dp"
+                android:textColor="#063a79"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:paddingTop="10dp"
+                android:paddingBottom="5dp" />
+
+            <TextView
+                android:id="@+id/vBefore"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="527dp"
+                android:background="@drawable/textviewborder"
+                android:textSize="15dp"
+                android:textColor="#063a79"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:padding="13dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal" >
+
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="590dp"
+                android:text="Assigned Route"
+                android:textSize="20dp"
+                android:textColor="#063a79"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:paddingTop="10dp"
+                android:paddingBottom="5dp" />
+
+            <TextView
+                android:id="@+id/assignedRoute"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="587dp"
+                android:background="@drawable/textviewborder"
+                android:textSize="15dp"
+                android:textColor="#063a79"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:padding="13dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal" >
+
+            <Button
+                android:id="@+id/cancel"
+                android:layout_width="210dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="650dp"
+                android:text="Cancel Registration"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:background="@drawable/submitbtn" />
+
+            <Button
+                android:id="@+id/update"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="650dp"
+                android:layout_marginLeft="5dp"
+                android:text="Update"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:background="@drawable/submitbtn" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="690dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="25dp"
+            android:text="Bus And Driver Details"
+            android:textAlignment="center"
+            android:textColor="#063a79"
+            android:textSize="38dp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal" >
+
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="790dp"
+                android:text="Bus Number"
+                android:textSize="20dp"
+                android:textColor="#063a79"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:paddingTop="10dp"
+                android:paddingBottom="5dp" />
+
+            <TextView
+                android:id="@+id/busNumber"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="787dp"
+                android:background="@drawable/textviewborder"
+                android:textSize="15dp"
+                android:textColor="#063a79"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:padding="13dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal" >
+
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="850dp"
+                android:text="Driver Name"
+                android:textSize="20dp"
+                android:textColor="#063a79"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:paddingTop="10dp"
+                android:paddingBottom="5dp" />
+
+            <TextView
+                android:id="@+id/driverName"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="847dp"
+                android:background="@drawable/textviewborder"
+                android:textSize="15dp"
+                android:textColor="#063a79"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:padding="13dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal" >
+
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="910dp"
+                android:text="Driver Contact"
+                android:textSize="20dp"
+                android:textColor="#063a79"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:paddingTop="10dp"
+                android:paddingBottom="5dp" />
+
+            <TextView
+                android:id="@+id/driverContact"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="907dp"
+                android:background="@drawable/textviewborder"
+                android:textSize="15dp"
+                android:textColor="#063a79"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:padding="13dp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</ScrollView>

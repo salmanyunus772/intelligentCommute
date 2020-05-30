@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" android:background="#f0ffff">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="600dp" >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="Enter Reply Here"
+        android:textAlignment="center"
+        android:textSize="25dp"
+        android:textColor="#063a79"
+        android:textStyle="bold"
+        android:paddingTop="20dp"
+        android:paddingBottom="25dp" />
+
+        <EditText
+            android:id="@+id/reply"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:layout_marginTop="110dp"
+            android:layout_marginLeft="30dp"
+            android:hint="Type Your Reply Here"
+            android:layout_centerHorizontal="true"/>
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="350dp"
+            android:layout_height="210dp"
+            android:layout_marginTop="280dp"
+            android:layout_marginLeft="30dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/lostfound" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal" >
+
+            <Button
+                android:id="@+id/capture"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="500dp"
+                android:text="Capture Image"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:background="@drawable/submitbtn" />
+
+            <Button
+                android:id="@+id/chooseFile"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="500dp"
+                android:layout_marginLeft="10dp"
+                android:text="Choose File"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:background="@drawable/submitbtn" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/send"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="550dp"
+            android:layout_marginLeft="135dp"
+            android:text="Send Reply"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/submitbtn" />
+
+    </RelativeLayout>
+
+</ScrollView>

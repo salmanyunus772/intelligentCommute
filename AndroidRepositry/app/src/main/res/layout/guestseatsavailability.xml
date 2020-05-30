@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f0ffff" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="740dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="Select Your Bus Stop to Check the Seats Availability"
+        android:textColor="#0000ff"
+        android:textStyle="italic"
+        android:textSize="30dp"
+        android:textAlignment="center"
+        android:padding="12dp"
+        android:layout_centerHorizontal="true" />
+
+    <Spinner
+        android:id="@+id/stops"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="100dp"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/findAvailability"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="180dp"
+        android:text="Find Availability"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:background="@drawable/submitbtn"
+        android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="230dp"
+            android:text="On Average Percentages"
+            android:textColor="#0000ff"
+            android:textStyle="italic"
+            android:textSize="30dp"
+            android:textAlignment="center"
+            android:padding="18dp"
+            android:layout_centerHorizontal="true" />
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/pieChart"
+            android:layout_marginTop="320dp"
+            android:layout_width="350dp"
+            android:layout_height="350dp"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="680dp"
+            android:text="Seats Availability Chart"
+            android:textColor="#0000ff"
+            android:textStyle="italic"
+            android:textSize="30dp"
+            android:textAlignment="center"
+            android:padding="18dp"
+            android:layout_centerHorizontal="true" />
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/barChart"
+            android:layout_marginTop="770dp"
+            android:layout_width="400dp"
+            android:layout_height="400dp"
+            android:layout_centerHorizontal="true" />
+
+    </RelativeLayout>
+
+</ScrollView>
