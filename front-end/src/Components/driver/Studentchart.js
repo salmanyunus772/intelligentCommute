@@ -14,11 +14,10 @@ export default class Studentchart extends React.Component {
       super(props);
       this.state = {
         loading: false,
+        totalRegStds:[],
         dateArray:[],
         authstd:[],
         un_authstd:[],
-        // missArray:[],
-        // avgArray:[],
         options: {
           chart: {
             id: 'apexchart-example',
@@ -49,6 +48,9 @@ export default class Studentchart extends React.Component {
       },{
       name:'Un Authorized Students',
       data :[],
+    },{
+      name:'',
+      data:[]
     }
     
     ],
@@ -87,57 +89,54 @@ export default class Studentchart extends React.Component {
     }
   }
     
-//     componentWillMount(){ 
+    componentWillMount(){ 
       
-//     axios.post("/api/driver/AuthenticStdCount").then(response => {
-//       console.log('ur response from cammmmmmmmmmmmmereaaa')
-//       console.log('responsexxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',response)
-//       this.setState({countArray:[]})
-//        var data=response.data
-//       // data.forEach((temp)=>{
-//       //       this.state.dateArray.push(temp.date);
-//       //       this.state.countArray.push(temp.datecount);
-//       //       this.state.probArray.push(temp.get_seat);
-//       //       this.state.missArray.push(temp.miss_seat);
-//       //       //this.state.sumArray.push(sum(this.state.probArray))
-//       // })
-//       // this.state.series[0].data=this.state.countArray;
-//       // this.state.series[1].data=this.state.probArray;
-//       // this.state.series[2].data=this.state.missArray;
+    axios.post("/api/driver/getCameraStd").then(response => {
+      console.log(response)
+      this.setState({authstd:[]})
+       var data=response.data
+      data.forEach((temp)=>{
+            this.state.totalRegStds.push(temp.totalSeats);
+            this.state.authstd.push(temp.rfid_count);
+            this.state.un_authstd.push(temp.camera_count);
+            this.state.dateArray.push(temp.Date)
+      })
+      this.state.series[0].data=this.state.totalRegStds;
+      this.state.series[1].data=this.state.authstd;
+      this.state.series[2].data=this.state.un_authstd;
       
       
+      // this.state.seriespie=fillpie;
       
-//       // this.state.seriespie=fillpie;
       
-      
-//       this.setState({
-//         options: {
-//           ...this.state.options,
-//           xaxis: {
-//             ...this.state.options.xaxis,
-//             categories: this.state.dateArray
-//           }
-//         }
-//       })
+      this.setState({
+        options: {
+          ...this.state.options,
+          xaxis: {
+            ...this.state.options.xaxis,
+            categories: this.state.dateArray
+          }
+        }
+      })
 
-//     })
-//     .catch(error => {
-//       console.log(error);
-//     store.addNotification({
-//         title: "Error",
-//         message: 'Error During Loading',
-//         type: "danger",
-//         insert: "top",
-//         container: "top-right",
-//         animationIn: ["animated", "fadeIn"],
-//         animationOut: ["animated", "fadeOut"],
-//         dismiss: {
-//           duration: 5000,
-//           onScreen: true
-//         }
-//   });
-// })
-// }
+    })
+    .catch(error => {
+      console.log(error);
+    store.addNotification({
+        title: "Error",
+        message: 'Error During Loading',
+        type: "danger",
+        insert: "top",
+        container: "top-right",
+        animationIn: ["animated", "fadeIn"],
+        animationOut: ["animated", "fadeOut"],
+        dismiss: {
+          duration: 5000,
+          onScreen: true
+        }
+  });
+})
+}
 
     render() {
       return (

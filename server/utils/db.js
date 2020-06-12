@@ -17,6 +17,7 @@ const Notification = require("../models/notification");
 const AuthenticStds=require('../models/authentic_stds');
 const Fakenews=require('../models/fakenews');
 const util = require("./utils");
+const cam_Rfid=require("../models/authentic_stds");
 // npm run-script dev
 
 module.exports = {
@@ -91,6 +92,7 @@ module.exports = {
     let auth_attendance={
       busId:data.busId,
       rfid_count:data.rfid_count,
+      camera_count:data.camera_count,
       Date:data.Date
     };
     let AuthAttendances=new AuthenticStds(auth_attendance); 
@@ -118,6 +120,9 @@ module.exports = {
   },
   findStudentByEmail: email => {
     return Student.findOne({ email: email });
+  },
+  findcameraCountstdonBus:busId=>{
+      return cam_Rfid.find({busId:busId})
   },
   findStudentByReg: reg => {
     return Student.findOne({ reg: reg });

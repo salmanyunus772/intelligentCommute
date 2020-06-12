@@ -99,8 +99,8 @@ adminRouter.post("/route_ASSIGN", (req, res, next) => {
 
 // adminRouter.post("/AuthenticStdCount",(req,res) => {
 //   const cam_countedStd = parseInt(req.query.camera_count);
-//   // console.log('ur camera count')
-//   //console.log(cam_countedStd);
+//   // console.log('ur camera count.........')
+//   // console.log(cam_countedStd);
   
 //   var countedrfid=parseInt(req.body.rfid_count)
 //   console.log(countedrfid);

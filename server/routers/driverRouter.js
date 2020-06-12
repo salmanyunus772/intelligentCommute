@@ -111,6 +111,7 @@ driverRouter.get('/viewSchedule',validate.token,(req,res)=>{
     });
 }); 
 driverRouter.post("/recover", (req, res, next) => {
+  console.log('rec');
   db.findDriverByCell(req.body.contact)
     .then(doc => {
       if (doc === null) {
@@ -133,9 +134,49 @@ driverRouter.post("/recover", (req, res, next) => {
   
   
 });
+driverRouter.post("/getCameraStd",async (req, res, next) => {
+  var count=[];
+  let busid="ACX-851";
+  db.findcameraCountstdonBus(busid).then(async(doc)=>{
+    console.log('urrrrrrrrrrdddddddddddddddd_count',doc);
+    // db.findDatesOnBus(doc[0].bus_id).then(async (doc1)=>{
+      db.findTotalBusSeats(doc[0].busId).then(async(busSeats)=>{
+        console.log('bus seats are===',busSeats[0].noOfSeats);
+        const totalSeats=busSeats[0].noOfSeats
+        const data=await doc.map(async(element) => {
+            var obj={
+              rfid_count:element.rfid_count ,
+     camera_count: element.camera_count,
+Date: element.Date,
+totalSeats:totalSeats
+            }
+            return obj
+          })
+          Promise.all(data).then((values)=>{
+            return res.json(values)
+          })
+      })
+      .catch(err => { 
+        console.log(err);
+        res.status(400).json({ error:err });
+        }); 
+        
+// })
+// .catch(err => { 
+// console.log(err);
+// res.status(400).json({ error:err });
+// }); 
+
+  })
+  .catch(err => { 
+    console.log(err);
+    res.status(400).json({ error:err });
+    }); 
+
+});
 
 
-driverRouter.post("/AuthenticStdCount",(req,res) => {
+driverRouter.post("/AuthenticStdCount",async (req,res) => {
   const cam_countedStd = parseInt(req.query.camera_count);
   console.log('ur camera count')
   console.log(cam_countedStd);
@@ -150,19 +191,23 @@ driverRouter.post("/AuthenticStdCount",(req,res) => {
     const rfidscount=doc;
     db.findTotalBusSeats(busid).then((busSeats)=>{
       const buseats=busSeats[0].noOfSeats;
-        res.json({rfidscount,buseats})
+        // res.json({rfidscount,buseats})
+  db.AuthenticAttendance({busId:busid,rfid_count:rfidscount,camera_count:cam_countedStd,Date:parsedDate})
+  .then(()=>{
+    res.json({message:'Total Rfid_Students and camera stds counted and stored.........'});
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(400).json({ error:err });
+  });
         })
-      
       })
         .catch(err => { 
           console.log(err);
           res.status(400).json({ error:err });
           });  
-    });
+        
+        });
   
-
-
-
-
 
 module.exports = driverRouter;
