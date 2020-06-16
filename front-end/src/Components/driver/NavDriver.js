@@ -38,6 +38,7 @@ export default class NavDriver extends React.Component {
               <Nav.Link href="/driver/" style={{fontSize:17}}><FontAwesomeIcon color="#b048d9" icon={faHouseUser}/></Nav.Link>
               <Nav.Link href="/driver/profile" style={{paddingLeft:'15px',fontSize:17}}>My Profile</Nav.Link>
               <Nav.Link href="/driver/lost" style={{paddingLeft:'15px',fontSize:17}}>Lost/Found</Nav.Link>
+              <Nav.Link href="/driver/driverviewlost" style={{paddingLeft:'15px',fontSize:17}}>Driver View Lost</Nav.Link>
               <Nav.Link href="/driver/complain" style={{paddingLeft:'15px',fontSize:17}}>Have Complains?</Nav.Link>
               <Nav.Link href="/driver/myschedule" style={{paddingLeft:'15px',fontSize:17}}>My Schedule</Nav.Link>
               <Nav.Link href="/driver/studentchart" style={{paddingLeft:'15px',fontSize:17}}>Student Status</Nav.Link>

@@ -18,7 +18,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
     this.state = {
       type: "lost",
       description:"",
-      img:""
+      img:null
     };
 
   }
@@ -29,25 +29,23 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
     this.setState({ type: e.target.value });
   }
   onChangeimg(e){
-    this.setState({ img: e.target.value });
+    this.setState({ img: e.target.files[0] });
   }
   
   onSubmit() {
     if (this.verify()) {
+      if(this.state.img != null){
       var config = {
-        headers: { Authorization: "bearer " + localStorage.getItem("token") }
+        headers: { 'content-type':'multipart/form-data', Authorization: "bearer " + localStorage.getItem("token") }
      };
  
-     var bodyParameters = {
-      from:this.state.from,
-      date:this.state.date,
-      type: this.state.type,
-      description: this.state.description,
-      img: this.state.img
-     };
+     const formData = new FormData();
+     formData.append("lf", this.state.type);
+     formData.append("desc", this.state.description);
+     formData.append("image", this.state.img);
       axios
-        .post("/api/driver/lost",
-        bodyParameters,
+        .post("/api/driver/lostWithImage",
+        formData,
         config) 
          .then(response => {
            store.addNotification({
@@ -81,6 +79,52 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
          });
  
        })
+      }
+      else{
+        var config = {
+          headers: {  'content-type':'multipart/form-data', Authorization: "bearer " + localStorage.getItem("token") }
+       };
+      const formData = new FormData();
+      formData.append("lf", this.state.type);
+      formData.append("desc", this.state.description);
+      formData.append("image", this.state.img);
+        axios
+          .post("/api/driver/lostWithoutImage",
+          formData,
+          config) 
+          .then(response => {
+             store.addNotification({
+               title: "Success",
+               message: response.data.message,
+               type: "success",
+               insert: "top",
+               container: "top-right",
+               animationIn: ["animated", "fadeIn"],
+               animationOut: ["animated", "fadeOut"],
+               dismiss: {
+                 duration: 5000,
+                 onScreen: true
+               }
+         })
+       })
+         .catch(error => {
+             console.log(error);
+           store.addNotification({
+               title: "Error",
+               message: "Not Posted",
+               type: "danger",
+               insert: "top",
+               container: "top-right",
+               animationIn: ["animated", "fadeIn"],
+               animationOut: ["animated", "fadeOut"],
+               dismiss: {
+                 duration: 5000,
+                 onScreen: true
+               }
+         });
+ 
+       })
+      }
    }
   }
    

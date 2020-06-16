@@ -13,7 +13,8 @@ export default class driverProfile extends Component {
     this.state={
         firstName:"",
         lastName:"",
-        cell:0
+        cell:0,
+        counter:0
     }
   }
   componentDidMount(){    
@@ -47,6 +48,7 @@ export default class driverProfile extends Component {
   }
   onChangeContact(e){
     this.setState({ cell: e.target.value });
+    this.setState({ counter:1 });
   }
   ContactUpdate(){
     if (this.state.cell.length < 11) {
@@ -64,9 +66,8 @@ export default class driverProfile extends Component {
         }
   });
     }
-    else{
-      
-      alert(this.state.firstName+""+this.state.lastName+""+this.state.cell);
+    else if(this.state.counter>0){
+      //alert(this.state.firstName+""+this.state.lastName+""+this.state.cell);
       var config = {
         headers: { Authorization: "bearer " + localStorage.getItem("token") }
      };
@@ -111,6 +112,20 @@ export default class driverProfile extends Component {
 
   })
   }
+  else {
+    store.addNotification({
+      title: "Error",
+      message: "Valid Details are Required or You may haven't enter updated details. ",
+      type: "danger",
+      insert: "top",
+      container: "top-right",
+      animationIn: ["animated", "fadeIn"],
+      animationOut: ["animated", "fadeOut"],
+      dismiss: {
+        duration: 5000,
+        onScreen: true
+      }
+});}
 }
 
   render() {

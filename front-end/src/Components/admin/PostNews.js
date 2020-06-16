@@ -100,12 +100,14 @@ export default class PostNews extends React.Component{
   }
     render(){
         return(
-            <div style={{padding:10,marginTop:20,backgroundImage:`url(${board})`}}>
+          <div>
+            {/* // <div style={{padding:10,marginTop:20,backgroundImage:`url(${board})`}}> */}
                 <Form>
    <Form.Group controlId="exampleForm.ControlTextarea1">
-   
     <Form.Label style={{fontFamily:'cursive',fontSize:"35px"}}> Post News Online <FontAwesomeIcon color="#b048d9" icon={faClipboardList}/></Form.Label>
-    <Form.Control as="textarea" rows="5" onChange={this.onChange}/>
+    <div style={{padding:10,height:'345px',width:'512px',backgroundImage:`url(${board})`}}>
+    <Form.Control as="textarea" rows="5" onChange={this.onChange} style={{width:'450px',marginLeft:'20px',marginTop:'20px'}}/>
+  </div>
   </Form.Group>
 </Form>
 
@@ -115,8 +117,8 @@ export default class PostNews extends React.Component{
 </Button>
 
 
-
-            </div>
+</div>
+            
         );
     }
 

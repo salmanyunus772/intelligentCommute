@@ -7,15 +7,18 @@ const crypto = require("crypto")
 const path = require("path")
 const Upload_image = require("../models/dummy");
 
+const fs = require("fs");
+const { promisify } = require('util');
+const unlinkAsync = promisify(fs.unlink);
+
 var multer  = require('multer')
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, '../imageFolder/')
   },
   filename: function (req, file, cb) {
-    crypto.pseudoRandomBytes(16, function (err, raw) {
-      cb(null, raw.toString('hex') + Date.now()  + path.extname(file.originalname));
-    });
+    console.log("Hello "+file);
+      cb(null, file.originalname);
   }
 });
 const fileFilter=(req,file,cb)=>{
@@ -122,11 +125,15 @@ studentRouter.get("/viewimg",(req,res) => {
 studentRouter.post("/viewlost",validate.token,(req, res, next) => {
   let regis_no=req.authData.reg
   let findlostitem=[];
+  //let lostfoundresponses=[];
   db.findlost().then((doc)=>{
+    // console.log('urrr doc is her',doc[0].responses)
+    // console.log('xxxxxxxxxxx');
     doc.forEach((element,index) => {
       findlostitem.push({id:element._id,from:element.from,date:element.date,type:element.type,
-        description:element.description,img:element.img});
+        description:element.description,img:element.img,stdresponses:element.responses[0]});
     });
+    
     res.json( {findlostitem,regis_no});
   })
   .catch(err => {
@@ -135,18 +142,44 @@ studentRouter.post("/viewlost",validate.token,(req, res, next) => {
   });
 
 });
-studentRouter.post("/lost",validate.token,(req,res) => {
-  db.addlostfound({from:req.authData.reg,date:Date.now(),type:req.body.type,description:req.body.description,img:req.body.img,responses:req.body.responses})
-  .then(()=>{
-    console.log("lost found posted");
-    res.json({message:'Lost/Found Item Posted'});
-  })
-  .catch(err => {
-    console.log(err);
-    res.status(400).json({ error:err });
-  });
-}
-);
+
+studentRouter.post("/lostWithoutImage", validate.token, upload.none(), (req,res) => {
+  console.log(req.body.lf);
+  if(req.body.desc.length<=10){
+    res.status(400).json({error:req.body.lf+' should be descriptive'});
+  }
+  else{
+    db.addlostfound({from:req.authData.reg,date:Date.now(),type:req.body.lf,description:req.body.desc, img:""})
+    .then(()=>{
+      console.log("lost found posted");
+      res.json({message:'Lost/Found Item Posted'});
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(400).json({ error:err });
+    });
+  }
+});
+
+studentRouter.post("/lostWithImage", validate.token, upload.single("image"), (req,res) => {
+  if(req.body.desc.length<=10){
+      res.status(400).json({error:req.body.lf+' description is necessary for posting'});
+      unlinkAsync(req.file.path);
+    }
+    else{
+      db.addlostfound({from:req.authData.reg,date:Date.now(),type:req.body.lf,description:req.body.desc, img:req.file.originalname})
+      .then(()=>{
+        console.log("lost found posted");
+        res.json({message:'Lost/Found Item Posted'});
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(400).json({ error:err });
+      });
+    }
+});
+
+
 
 
 studentRouter.post("/lostfoundresponse",(req, res, next) => {

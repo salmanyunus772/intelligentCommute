@@ -15,7 +15,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
         this.state = {
           description:"",
-          AdminCompResponse:""
+          AdminResponse:""
         };
     
       }
@@ -31,7 +31,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
           from:this.state.from,
           date:this.state.date,
           description: this.state.description,
-          AdminCompResponse:this.state.AdminCompResponse
+          AdminResponse:this.state.AdminResponse
          };
           axios
             .post("/api/driver/complain",

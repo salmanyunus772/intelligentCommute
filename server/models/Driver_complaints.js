@@ -10,7 +10,7 @@ let drivercomplaintSchema =mongoose.Schema({
         type: String,
         required:true
     },
-    AdminCompResponse:{
+    AdminResponse:{
         type: String
     }
 });

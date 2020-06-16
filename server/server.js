@@ -26,6 +26,7 @@ if(process.env.NODE_ENV === "production"){
 }
 app.use(express.static('imageFolder'));
 
+app.use("/image", express.static('../imageFolder'));
 
 app.use(errorhandler());
 app.listen(port,()=>{

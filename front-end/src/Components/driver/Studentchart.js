@@ -48,10 +48,7 @@ export default class Studentchart extends React.Component {
       },{
       name:'Un Authorized Students',
       data :[],
-    },{
-      name:'',
-      data:[]
-    }
+    },
     
     ],
         plotOptions: {
@@ -66,25 +63,25 @@ export default class Studentchart extends React.Component {
             colors: ['transparent']
           }
       },
-      seriespie: [],
-            optionspie: {
-              chart: {
-                width: 380,
-                type: 'pie',
-              },
-              labels: ['Getting Seat %','Missing Seat %'] ,
-              responsive: [{
-                breakpoint: 480,
-                options: {
-                  chart: {
-                    width: 200
-                  },
-                  legend: {
-                    position: 'bottom'
-                  }
-                }
-              }]
-            },
+      // seriespie: [],
+      //       optionspie: {
+      //         chart: {
+      //           width: 380,
+      //           type: 'pie',
+      //         },
+      //         labels: ['Getting Seat %','Missing Seat %'] ,
+      //         responsive: [{
+      //           breakpoint: 480,
+      //           options: {
+      //             chart: {
+      //               width: 200
+      //             },
+      //             legend: {
+      //               position: 'bottom'
+      //             }
+      //           }
+      //         }]
+      //       },
           
     }
   }
@@ -148,13 +145,13 @@ export default class Studentchart extends React.Component {
           <Container>
                 <Row>
         <Col>
-        <strong><i><h1>Authorize vs UnAuthorize Students</h1></i></strong>
+        <strong><i><h1>Authorize vs UnAuthorize Students with Dates</h1></i></strong>
         <Chart options={this.state.options} series={this.state.series} type='bar' width={500} height={300} />
         </Col>
-        <Col>
+        {/* <Col>
         <h1> Un Authorized Students</h1>
         <Chart options={this.state.optionspie} series={this.state.seriespie} type='pie' width={350} height={230} />
-        </Col>
+        </Col> */}
         </Row>
         </Container> 
         </div>

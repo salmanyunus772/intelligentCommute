@@ -258,7 +258,7 @@ adminRouter.post("/extendService",(req,res)=>{
     });
 
     adminRouter.post("/complainresponsedriver",(req, res, next) => {
-      db.addAdminComplainDriverResponse(req.body._id,req.body.AdminCompResponse).then(()=>{
+      db.addAdminComplainDriverResponse(req.body._id,req.body.AdminResponse).then(()=>{
         res.json( {message:"Successfully responded to Driver"});
       })
       .catch(err => {
@@ -296,7 +296,7 @@ adminRouter.post("/extendService",(req,res)=>{
       let buses=[];
       db.findBuses().then((doc)=>{  
         doc.forEach((element,index) => {
-          buses.push({id:element._id,busNumber:element.busNumber,noOfSeats:element.noOfSeats,scheduleId:element.scheduleId});
+          buses.push({id:element._id,busNumber:element.busNumber,noOfSeats:element.noOfSeats});
         });
         res.json({buses});
       })
@@ -308,10 +308,9 @@ adminRouter.post("/extendService",(req,res)=>{
     
     adminRouter.get("/viewdrivercomplains",(req, res, next) => {
       let d_complains=[];
-      
       db.findDriverComplains().then((doc)=>{  
         doc.forEach((element,index) => {
-          if(element.AdminCompResponse===""){
+          if(element.AdminResponse===""){
           d_complains.push({id:element._id,from:element.from,date:element.date,
             description:element.description});
           }

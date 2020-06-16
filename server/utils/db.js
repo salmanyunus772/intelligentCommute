@@ -45,7 +45,6 @@ module.exports = {
       type:data.type,
       description:data.description,
       img:data.img,
-      responses:data.responses
     };
     let item=new lostfounditem(itemlostfound); 
     return item.save();
@@ -136,10 +135,11 @@ module.exports = {
       doc.save();
     });
   },
-  updateDriverContact:(firstName,lastName,cell)=>{
-    console.log(firstName)
+  updateDriverContact:(firstName,lastName,ucell)=>{
     return Driver.findOne({firstName:firstName,lastName:lastName},function(err,doc){
-      doc.cell=cell;
+      console.log('updATED CELL==',ucell);
+      doc.cell=ucell
+      console.log(doc.cell);
       doc.save();
     });
   },
@@ -192,7 +192,9 @@ module.exports = {
   getBus: busNumber => {
     return Bus.findOne({ busNumber: busNumber });
   }, 
-
+  getScheduledBus: busNumber => {
+    return Schedule.find({ busNumber: busNumber})
+  }, 
   seatOccupy:(bus_nbr)=>{
     return Bus.findOne({ busNumber: bus_nbr },function(err,doc){
       doc.occupiedSeats=(doc.occupiedSeats)+1;
@@ -268,7 +270,7 @@ module.exports = {
       from:data.from,
       date:data.date,
       description:data.description,
-      AdminCompResponse:data.AdminCompResponse
+      AdminResponse:data.AdminResponse
     };
     let comp=new drv_complaint(drivercomplaint); 
     return comp.save();
@@ -292,7 +294,7 @@ module.exports = {
 
   addAdminComplainDriverResponse:(id,res)=>{
     return drv_complaint.findOne({_id:id },function(err,doc){
-      doc.AdminCompResponse=res;
+      doc.AdminResponse=res;
       doc.save();
     });
 
@@ -337,6 +339,7 @@ module.exports = {
   findlost:()=>{
     return lostfounditem.find({});
   },
+  
   
   
   addRoute:data=>{

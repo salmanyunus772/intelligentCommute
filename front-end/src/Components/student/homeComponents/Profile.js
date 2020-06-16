@@ -34,20 +34,30 @@ class Profile extends Component {
         EmergencyContact:1,
         id:0,
         driverName:'',
-        driverContact:''
+        driverContact:'',
+        counter:0
 
     }
   }
   onChangeEmail(e) {
     this.setState({ email: e.target.value });
+    this.setState({ counter:1 });
+    
+    
 
   }
   stopChange(e){
     this.setState({ stop: e.target.value });
+    this.setState({ counter:1 });
+    
+    
     
   }
   onChangeContact(e){
     this.setState({ EmergencyContact: e.target.value });
+    this.setState({ counter:1 });
+
+    
     
   }
   OnCancel(){
@@ -94,7 +104,7 @@ class Profile extends Component {
     })
   } 
   OnUpdate(){
-    if (this.verify()) {
+    if (this.verify() && this.state.counter>0) {
       var config = {
         headers: { Authorization: "bearer " + localStorage.getItem("token") }
      };
@@ -146,7 +156,7 @@ class Profile extends Component {
     } else {
       store.addNotification({
         title: "Error",
-        message: "Valid Details ares Required",
+        message: "Valid Details are Required or You may haven't enter updated details. ",
         type: "danger",
         insert: "top",
         container: "top-right",

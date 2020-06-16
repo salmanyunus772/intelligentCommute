@@ -18,7 +18,7 @@ export default class ViewDriverComplains extends React.Component{
         this.sendR=this.sendR.bind(this);
         this.state={
           _id:'',
-          AdminCompResponse:'', 
+          AdminResponse:'', 
           drivercomplainArray:[] };
     }
              
@@ -26,6 +26,7 @@ export default class ViewDriverComplains extends React.Component{
         axios
         .get("/api/admin/viewdrivercomplains")
         .then(response => {
+          console.log('dddddddddddddd',response)
             this.setState({ drivercomplainArray:response.data.d_complains})
 
         })
@@ -35,14 +36,14 @@ export default class ViewDriverComplains extends React.Component{
         });
     }
     respond(e){
-      this.setState({AdminCompResponse:e.target.value});
+      this.setState({AdminResponse:e.target.value});
       
     }
 
     sendR(_id){
-      if (this.state.AdminCompResponse.length>=10) {
+      if (this.state.AdminResponse.length>=10) {
        var bodyParameters = {
-        AdminCompResponse:this.state.AdminCompResponse,
+        AdminResponse:this.state.AdminResponse,
         _id:this.state._id
        };
         axios

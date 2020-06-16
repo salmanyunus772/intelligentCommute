@@ -47,8 +47,8 @@ export default class AdminNavbarTop extends React.Component {
               <Nav.Link href="/admin/regbus" style={{fontSize:15}}>AddBus </Nav.Link>
               <Nav.Link href="/admin/busView" style={{fontSize:15}}>ViewBuses </Nav.Link>
               <Nav.Link href="/admin/busFuel" style={{fontSize:15}}>BusesFuel </Nav.Link>
-              <Nav.Link href="/admin/viewplan" style={{fontSize:15}}>BusesPlans</Nav.Link>
-              <Nav.Link href="/admin/createplan" style={{fontSize:15}}>MakePlan</Nav.Link>
+              {/* <Nav.Link href="/admin/viewplan" style={{fontSize:15}}>BusesPlans</Nav.Link>
+              <Nav.Link href="/admin/createplan" style={{fontSize:15}}>MakePlan</Nav.Link> */}
                  <Nav.Link onClick={this.onClick} href="" style={{fontSize:15}}>
                 SignOut
               </Nav.Link>

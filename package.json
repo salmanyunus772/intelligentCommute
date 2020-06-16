@@ -4,8 +4,7 @@
   "scripts": {
     "client-side": "cd front-end && npm start",
     "server-side": "cd server && nodemon server.js",
-    "dev": "concurrently --kill-others-on-fail \"npm run-script server-side\" \"npm run-script client-side\""
-  
+    "start":"concurrently --kill-others-on-fail \"npm run-script server-side\" \"npm run-script client-side\""
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.13.0",

@@ -34,7 +34,7 @@ export default class ViewBus extends React.Component{
           <td>{key + 1}</td>
           <td>{element.busNumber}</td>
           <td>{element.noOfSeats}</td>
-          <td>{element.scheduleId}</td>
+          {/* <td>{element.scheduleId}</td> */}
           </tr>
           );
           });
@@ -52,7 +52,7 @@ export default class ViewBus extends React.Component{
                   <th style={{color:'white'}}>#</th>
                   <th style={{color:'white'}}>Bus No</th>
                   <th style={{color:'white'}}>Seater</th>
-                  <th style={{color:'white'}}>Schedule-Id</th>
+                  
                 </tr>
               </thead>
               <tbody>{this.createTable()}</tbody>

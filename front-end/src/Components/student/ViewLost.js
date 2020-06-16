@@ -33,6 +33,7 @@ export default class ViewLost extends React.Component{
         axios
         .post("/api/student/viewlost",bodyParameters,config)
         .then(response => {
+          console.log('responseeeee',response)
              this.setState({ lostfoundArray:response.data.findlostitem})
              this.setState({stdreg:response.data.regis_no})
         })
@@ -149,6 +150,7 @@ export default class ViewLost extends React.Component{
           return {};
         } else {
           let table = [];
+          // console.log(this.state.lostfoundArray);
           this.state.lostfoundArray.forEach((element, key) => {
             if(element.from===this.state.stdreg){
             table.push(
@@ -158,8 +160,8 @@ export default class ViewLost extends React.Component{
                 <td>{element.date}</td>
                 <td>{element.type}</td>
                 <td >{element.description}</td> 
-                <td><Img src={element.img}/></td>
-                <td></td>
+                <td><Img src={`http://localhost:3001/image/${element.img}`} style={{width:'150px',height:'150px'}}/></td>
+            <td>{element.stdresponses}</td>
                 {/* <td>    
             <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onClick={()=>{
              this.setState({_id:this.state.lostfoundArray[key].id})
@@ -179,7 +181,8 @@ export default class ViewLost extends React.Component{
                   <td>{element.date}</td>
                   <td>{element.type}</td>
                   <td >{element.description}</td> 
-                  <td><Img src={element.img}/></td>
+                  <td><Img src={`http://localhost:3001/image/${element.img}`} style={{width:'150px',height:'150px'}}/></td>
+                  {/* <td>{element.stdresponses}</td> */}
                   <td>    
             <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onClick={()=>{
              this.setState({_id:this.state.lostfoundArray[key].id})

@@ -8,11 +8,12 @@ import DriverComplain from "./DriverComplains";
 import DriverSchedule from "./DriverSchedule";
 import DriverLost from "./DriverLost";
 import Studentchart from './Studentchart';
-import StudentPanel from '../student/StudentPanel';
+import DriverPanel from './driverPanel';
+
 import Notifications from "../student/homeComponents/Notifications"
 import { Route } from "react-router-dom";
 import driverRecover from "../driver/driverRecover";
-
+import DriverViewlost from "../driver/driverViewlost";
 export default class DriverRoutes extends React.Component{
     render(){
         return(
@@ -50,6 +51,17 @@ export default class DriverRoutes extends React.Component{
             </div>
           )}
         />
+        <Route
+          path="/driver/driverviewlost"
+          render={props => (
+            <div>
+              <NavDriver />
+              <DriverPanel>
+              <DriverViewlost/></DriverPanel>
+              
+            </div>
+          )}
+        />
       
         <Route
           path="/driver/lost"
@@ -74,7 +86,7 @@ export default class DriverRoutes extends React.Component{
           render={props => (
             <div>
               <NavDriver />
-              <StudentPanel> <Studentchart/></StudentPanel>
+              <DriverPanel> <Studentchart/></DriverPanel>
               
             </div>
           )}
