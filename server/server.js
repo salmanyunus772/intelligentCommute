@@ -17,13 +17,13 @@ app.use('/api/student',studentRouter);
 app.use('/api/admin',adminRouter);
 app.use('/api/driver',driverRouter);
 
-if(process.env.NODE_ENV === "production"){
-    app.use(express.static('front-end/build'));
+// if(process.env.NODE_ENV === "production"){
+    app.use(express.static('../front-end/build'));
 
     app.get('*',(req,res)=>{
-        res.sendFile(path.resolve(__dirname,'front-end','build','index.html'))
+        res.sendFile(path.resolve(__dirname,'..','front-end','build','index.html'))
     });
-}
+// }
 app.use(express.static('imageFolder'));
 
 app.use("/image", express.static('../imageFolder'));
