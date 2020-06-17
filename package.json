@@ -4,7 +4,8 @@
   "scripts": {
     "client-side": "cd front-end && npm start",
     "server-side": "cd server && nodemon server.js",
-    "start": "concurrently --kill-others-on-fail \"npm run-script server-side\" \"npm run-script client-side\"",
+    "start1": "concurrently --kill-others-on-fail \"npm run-script server-side\" \"npm run-script client-side\"",
+    "start": "npm install --prefix server && npm run-script server-side",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix front-end && npm run build --prefix front-end"
   },
   "dependencies": {
