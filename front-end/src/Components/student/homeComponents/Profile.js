@@ -212,7 +212,7 @@ class Profile extends Component {
    };
    axios
      .post(
-       "http://localhost:3000/api/student/viewProfile",
+       "/api/student/viewProfile",
        bodyParameters,
        config
      )

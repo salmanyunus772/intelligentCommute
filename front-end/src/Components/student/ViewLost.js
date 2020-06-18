@@ -160,7 +160,9 @@ export default class ViewLost extends React.Component{
                 <td>{element.date}</td>
                 <td>{element.type}</td>
                 <td >{element.description}</td> 
-                <td><Img src={`http://localhost:3001/image/${element.img}`} style={{width:'150px',height:'150px'}}/></td>
+                
+                {/* http://localhost:3001 */}
+                <td><Img src={`https://intelligent-commute.herokuapp.com/image/${element.img}`} style={{width:'150px',height:'150px'}}/></td>
             <td>{element.stdresponses}</td>
                 {/* <td>    
             <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onClick={()=>{
@@ -181,7 +183,7 @@ export default class ViewLost extends React.Component{
                   <td>{element.date}</td>
                   <td>{element.type}</td>
                   <td >{element.description}</td> 
-                  <td><Img src={`http://localhost:3001/image/${element.img}`} style={{width:'150px',height:'150px'}}/></td>
+                  <td><Img src={`https://intelligent-commute.herokuapp.com/image/${element.img}`} style={{width:'150px',height:'150px'}}/></td>
                   {/* <td>{element.stdresponses}</td> */}
                   <td>    
             <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onClick={()=>{
