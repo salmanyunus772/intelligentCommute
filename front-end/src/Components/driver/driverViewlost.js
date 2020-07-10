@@ -18,11 +18,16 @@ export default class DriverViewlost extends React.Component{
         this.DeletePost=this.DeletePost.bind(this);
         this.respond=this.respond.bind(this);
         this.sendR=this.sendR.bind(this);
+        this.onChangeimg=this.onChangeimg.bind(this);
         this.state={ 
             _id:'',
             contact:'',
             LostFoundResponse:'',
+            img:null,
             lostfoundArray:[] };
+    }
+    onChangeimg(e){
+      this.setState({ img: e.target.files[0] });
     }          
     componentDidMount(){
       var config = {
@@ -33,9 +38,8 @@ export default class DriverViewlost extends React.Component{
         axios
         .post("/api/driver/viewlostbydriver",bodyParameters,config)
         .then(response => {
-            console.log('rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr',response)
              this.setState({ lostfoundArray:response.data.findlostitem})
-             this.setState({contact:response.data.regis_no})
+             this.setState({contact:response.data.contact})
         })
         .catch(err => {
           console.log(err);
@@ -47,17 +51,20 @@ export default class DriverViewlost extends React.Component{
     }
     sendR(_id){
       if (this.state.LostFoundResponse.length>=10) {
-       var bodyParameters = {
-        LostFoundResponse:this.state.LostFoundResponse,
-        _id:this.state._id,
-        contact:this.state.contact
-       };
-        axios
-          .post("/api/driver/driverlostfoundresponse",
-          bodyParameters,
-          ) 
-           .then(response => {
-             store.addNotification({
+        if(this.state.img != null){
+          var config = {
+            headers: {  'content-type':'multipart/form-data', Authorization: "bearer " + localStorage.getItem("token") }
+         };
+        const formResponseDriverData = new FormData();
+        formResponseDriverData.append("id", this.state._id);
+        formResponseDriverData.append("reply", this.state.LostFoundResponse);
+        formResponseDriverData.append("image", this.state.img);
+          axios
+            .post("/api/driver/replylostfoundwithimage",
+            formResponseDriverData,
+            config) 
+            .then(response => {
+               store.addNotification({
                  title: "Success",
                  message: response.data.message,
                  type: "success",
@@ -75,7 +82,7 @@ export default class DriverViewlost extends React.Component{
                console.log(error);
              store.addNotification({
                  title: "Error",
-                 message: "Not Sent",
+                 message: "Not Posted",
                  type: "danger",
                  insert: "top",
                  container: "top-right",
@@ -88,21 +95,53 @@ export default class DriverViewlost extends React.Component{
            });
    
          })
-     }
-     else{
-      store.addNotification({
-        title: "Error",
-        message: "Response Should be Descriptive",
-        type: "danger",
-        insert: "top",
-        container: "top-right",
-        animationIn: ["animated", "fadeIn"],
-        animationOut: ["animated", "fadeOut"],
-        dismiss: {
-          duration: 5000,
-          onScreen: true
         }
-  })
+        else{
+          var config = {
+            headers: {  'content-type':'multipart/form-data', Authorization: "bearer " + localStorage.getItem("token") }
+         };
+        const formResponseDriverData = new FormData();
+        formResponseDriverData.append("id", this.state._id);
+        formResponseDriverData.append("reply", this.state.LostFoundResponse);
+        formResponseDriverData.append("image", this.state.img);
+          axios
+            .post("/api/driver/replylostfoundwithoutimage",
+            formResponseDriverData,
+            config) 
+            .then(response => {
+               store.addNotification({
+                 title: "Success",
+                 message: response.data.message,
+                 type: "success",
+                 insert: "top",
+                 container: "top-right",
+                 animationIn: ["animated", "fadeIn"],
+                 animationOut: ["animated", "fadeOut"],
+                 dismiss: {
+                   duration: 5000,
+                   onScreen: true
+                 }
+           })
+         })
+           .catch(error => {
+               console.log(error);
+             store.addNotification({
+                 title: "Error",
+                 message: "Not Posted",
+                 type: "danger",
+                 insert: "top",
+                 container: "top-right",
+                 animationIn: ["animated", "fadeIn"],
+                 animationOut: ["animated", "fadeOut"],
+                 dismiss: {
+                   duration: 5000,
+                   onScreen: true
+                 }
+           });
+   
+         })
+        }
+
      }
     }
     DeletePost(idDel){
@@ -213,10 +252,11 @@ export default class DriverViewlost extends React.Component{
                               </button>
                             </div>
                             <div className="modal-body">
-                            <Form.Control as="textarea" rows="3" onChange={this.respond}/>
+                            <Form.Control as="textarea" rows="3" id="reply" onChange={this.respond}/>
                             </div>
                             <div className="modal-footer">
                               <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                              <input type='file' id="image" onChange={this.onChangeimg}/>
                               <button type="button" className="btn btn-primary" onClick={()=>{this.sendR(this.state._id)}}>Send Response</button>
                             </div>
                           </div>

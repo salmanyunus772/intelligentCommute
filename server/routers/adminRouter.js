@@ -133,6 +133,9 @@ adminRouter.post("/route_ASSIGN", (req, res, next) => {
 adminRouter.post("/assignRouteToBus", (req, res, next) => {
   db.AssignBusToRoute(req.body.route_id,req.body.busNumber).then(()=>{
     res.json({message:'Route assigned to Bus'});
+    
+
+
     })
     .catch(err => {
       console.log(err);
@@ -207,6 +210,23 @@ adminRouter.post("/extendService",(req,res)=>{
     })
   })
   });
+  
+adminRouter.post("/getAllBusesLocation",validate.token, (req, res, next) => {
+  let busLocations=[];
+  db.getAllBuses().then((doc)=>{
+    doc.forEach(element=>{
+      busLocations.push({
+        location:element.location,
+        busNumber:element.busNumber
+      })
+    })
+    
+    res.json(busLocations)
+  })
+  .catch(()=>{
+       res.status(500).json({error:"Server error"});
+    })
+});
   adminRouter.post("/confirmStudent",(req,res)=>{
     db.findStudentByReg(req.body.reg).then((doc)=>{ 
       db.findStop(doc.stop).then((data)=>{

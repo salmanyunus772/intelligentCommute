@@ -18,6 +18,7 @@ const AuthenticStds=require('../models/authentic_stds');
 const Fakenews=require('../models/fakenews');
 const util = require("./utils");
 const cam_Rfid=require("../models/authentic_stds");
+const lostfoundresponse=require("../models/lostfoundresponse");
 // npm run-script dev
 
 module.exports = {
@@ -129,6 +130,18 @@ module.exports = {
   AssignBusToRoute: (route_id,busNumber) => {
     return Route.findOneAndUpdate({ route_id: route_id },{$set:{bus_id:busNumber}});
   },
+  addLostFoundResponse:data=>{
+    let lfr={
+      id:data.id,
+      responseFrom:data.responseFrom,
+      responderPhoneNumber:data.responderPhoneNumber,
+      responseDate:data.responseDate,
+      reply:data.reply,
+      img:data.img
+    };
+    let lfreply=new lostfoundresponse(lfr); 
+    return lfreply.save();
+  },
   changeStudentPassword: (email, pass) => {
     Student.findOne({ email: email }, function(err, doc) {
       doc.pass = pass;
@@ -192,6 +205,10 @@ module.exports = {
   getBus: busNumber => {
     return Bus.findOne({ busNumber: busNumber });
   }, 
+
+  getAllBuses:()=>{
+    return Bus.find({});
+  },
   getScheduledBus: busNumber => {
     return Schedule.find({ busNumber: busNumber})
   }, 

@@ -207,7 +207,7 @@ driverRouter.post("/getCameraStd",async (req, res, next) => {
   db.findcameraCountstdonBus(busid).then(async(doc)=>{
     // db.findDatesOnBus(doc[0].bus_id).then(async (doc1)=>{
       db.findTotalBusSeats(doc[0].busId).then(async(busSeats)=>{
-        console.log('bus seats are===',busSeats[0].noOfSeats);
+      
         const totalSeats=busSeats[0].noOfSeats
         const data=await doc.map(async(element) => {
             var obj={
@@ -292,5 +292,40 @@ driverRouter.post("/AuthenticStdCount",async (req,res) => {
         
         });
   
-
+        driverRouter.post("/replylostfoundwithoutimage", validate.token, upload.none(), (req,res) => {
+          if(req.body.reply.length<=10){
+            res.status(400).json({error: "Response should be descriptive"});
+          }
+          else{
+            db.addLostFoundResponse({id:req.body.id, responseFrom:req.authData.firstName+" "+req.authData.lastName, responderPhoneNumber:req.authData.cell+"", responseDate:Date.now(),reply:req.body.reply, img:""})
+            .then(()=>{
+              console.log("Your Response Successfully Sent");
+              res.json({message:'Response Posted'});
+            })
+            .catch(err => {
+              console.log(err);
+              res.status(400).json({ error:err });
+            });
+          }
+        }
+        );
+         
+        driverRouter.post("/replylostfoundwithimage", validate.token, upload.single("image"), (req,res) => {
+          if(req.body.reply.length<=10){
+            res.status(400).json({error: "Response should be descriptive"});
+            unlinkAsync(req.file.path);
+          }
+          else{
+            db.addLostFoundResponse({id:req.body.id, responseFrom:req.authData.firstName+" "+req.authData.lastName, responderPhoneNumber:req.authData.cell+"", responseDate:Date.now(),reply:req.body.reply, img:req.file.originalname})
+            .then(()=>{
+              console.log("Your Response Successfully Sent");
+              res.json({message:'Response Posted'});
+            })
+            .catch(err => {
+              console.log(err);
+              res.status(400).json({ error:err });
+            });
+          }
+        }
+        );
 module.exports = driverRouter;

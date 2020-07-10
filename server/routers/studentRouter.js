@@ -125,10 +125,7 @@ studentRouter.get("/viewimg",(req,res) => {
 studentRouter.post("/viewlost",validate.token,(req, res, next) => {
   let regis_no=req.authData.reg
   let findlostitem=[];
-  //let lostfoundresponses=[];
   db.findlost().then((doc)=>{
-    // console.log('urrr doc is her',doc[0].responses)
-    // console.log('xxxxxxxxxxx');
     doc.forEach((element,index) => {
       findlostitem.push({id:element._id,from:element.from,date:element.date,type:element.type,
         description:element.description,img:element.img,stdresponses:element.responses[0]});
@@ -419,7 +416,54 @@ res.status(400).json({ error:err });
     }); 
 
 });
+studentRouter.post("/replylostfoundwithoutimage", validate.token, upload.none(), (req,res) => {
+  if(req.body.reply.length<=10){
+    res.status(400).json({error: "Response should be descriptive"});
+  }
+  else{
+    db.findStudentByEmail(req.authData.email)
+    .then((doc)=>{
+      db.addLostFoundResponse({id:req.body.id, responseFrom:req.authData.firstName+" "+req.authData.lastName, responderPhoneNumber:doc.EmergencyContact+"", responseDate:Date.now(),reply:req.body.reply, img:""})
+      .then(()=>{
+        console.log("Your Response Successfully Sent");
+        res.json({message:'Response Posted'});
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(400).json({ error:err });
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(400).json({ error:err });
+    });
+}
+});
+ 
+studentRouter.post("/replylostfoundwithimage", validate.token, upload.single("image"), (req,res) => {
 
+  if(req.body.reply.length<=10){
+    res.status(400).json({error: "Response should be descriptive"});
+    unlinkAsync(req.file.path);
+  }
+  else{
+    db.findStudentByEmail(req.authData.email)
+    .then((doc)=>{
+    db.addLostFoundResponse({id:req.body.id, responseFrom:req.authData.firstName+" "+req.authData.lastName, responderPhoneNumber:doc.EmergencyContact+"", responseDate:Date.now(),reply:req.body.reply, img:req.file.originalname})
+    .then(()=>{
+      console.log("Your Response Successfully Sent");
+      res.json({message:'Response Posted'});
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(400).json({ error:err });
+    });
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(400).json({ error:err });
+  });
+  }});
 
 studentRouter.post("/getLocation",validate.token, (req, res, next) => {
   db.findStudentByEmail(req.authData.email).then((doc)=>{

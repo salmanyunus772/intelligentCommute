@@ -1,115 +1,143 @@
-/*global google*/
-import React, { Component } from "react";
+import React, { Component } from 'react';
+import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
+import L from 'leaflet';
 import axios from "axios";
-import {
-  withGoogleMap,
-  GoogleMap,
-  DirectionsRenderer
-} from "react-google-maps";
-class Map extends Component {
-  state = {
-    directions: null,
-    origin:[0,0],
-    destination:[0,0],
-    waypoints:[[0,0],[0,0],[0,0],[0,0],[0,0]]
-  };
-
-  componentDidMount() {
+const iconPerson = new L.Icon({
+    iconUrl: require('../../icons/marker1.png'),
+    iconRetinaUrl: require('../../icons/marker1.png'),
+    iconAnchor: null,
+    popupAnchor:[0, -20],
+    shadowUrl: null,
+    shadowSize: null,
+    shadowAnchor: null,
+    iconSize: new L.Point(50, 50),
     
-    var config = {
-      headers: { Authorization: "bearer " + localStorage.getItem("token") }
-    };
-
-    var bodyParameters = {};
-
-    axios
-    .post("/api/student/getroutes",config,bodyParameters)
-    .then(response => {
-      
-      this.setState({
-        origin:response.data.routes[0].origin,
-        destination:response.data.routes[0].destination,
-        waypoints:response.data.routes[0].stops,
-
-      })
-      console.log(this.state.origin[0]);
-      const directionsService = new google.maps.DirectionsService();
-
-    // const origin = { lat: 40.756795, lng: -73.954298 };
-    // const destination = { lat: 41.756795, lng: -78.954298 };
-
-    directionsService.route(
-      {
-        origin: {lat:this.state.origin[0],lng:this.state.origin[1]},
-        waypoints:[{location:{ lat: this.state.waypoints[0][0], lng: this.state.waypoints[0][1]},stopover:true},{location:{ lat: this.state.waypoints[1][0], lng: this.state.waypoints[1][1] },stopover:true},{location:{ lat: this.state.waypoints[2][0], lng: this.state.waypoints[2][1] },stopover:true},{location:{ lat: this.state.waypoints[3][0], lng: this.state.waypoints[3][1] },stopover:true}],
-        destination:  {lat: this.state.waypoints[4][0], lng: this.state.waypoints[4][1] },
-        optimizeWaypoints: true,
-        travelMode: google.maps.TravelMode.DRIVING
-      },
-      (result, status) => {
-        if (status === google.maps.DirectionsStatus.OK) {
-          this.setState({
-            directions: result
-          });
-        } else {
-          console.error(`error fetching directions ${result}`);
-        }
-      }
-    );
-    })
-    .catch(err => {
-     
-    });
-
     
+});
+const iconPerson2 = new L.Icon({
+  iconUrl: require('../../icons/Uni.png'),
+  iconRetinaUrl: require('../../icons/Uni.png'),
+  iconAnchor: null,
+  popupAnchor:[0, -20],
+  shadowUrl: null,
+  shadowSize: null,
+  shadowAnchor: null,
+  iconSize: new L.Point(50, 50),
+  
+});
+class Mapp extends Component {
+  constructor(){
+    super();
+    this.state={
+      position: [33.6518307,73.1544046],
+      BusesCurrentLocations:[],
+      stores:[]
+    }
   }
-
+  
+  displayMarkers = () => {
+    if(!this.state.stores){
+      return ;
+    }
+    return this.state.stores.map((store, index) => {
+      return <Marker key={index} id={index} opacity='1' icon={iconPerson} position={{
+       lat: store.lat,
+       lng: store.lng
+     }}     
+     ><Popup>
+     This is Bus {store.busNumber}
+   </Popup> 
+     </Marker>
+    })
+  }
   render() {
-    const GoogleMapExample = withGoogleMap(props => (
-      <GoogleMap
-        defaultCenter={{ lat: this.state.origin[0], lng: this.state.origin[1] }}
-        defaultZoom={13}
-      >
-        <DirectionsRenderer
-          directions={this.state.directions}
-        />
-      </GoogleMap>
-
-      
-    ));
-
+    
     return (
-      <div>
-        <GoogleMapExample
-          containerElement={<div style={{ height: `580px`, width: "100%" }} />}
-          mapElement={<div style={{ height: `100%` }} />}
-        />
-     
+        
       <div style={{textAlign:'center', height: '80vh',borderRadius:10, width: '80%',margin:'50px auto',padding:20,background:'white' }}>
       <h2 className="display-4">Track Fleet </h2>
       
-         <Map center={this.state.position} zoom={13}>
+         <Map center={this.state.position} zoom={13} opacity='1' icon={iconPerson}>
             <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
             />
-            
-            <Marker opacity='1' icon={iconPerson} position={this.state.position}>
-           {/* {this.displayMarkers()} */}
-            <Popup>
-              A pretty CSS3 popup. <br /> Easily customizable.
-            </Popup>
-            </Marker>
-            <Marker opacity='1' icon={iconPerson} position={this.state.stores[0]} onClick={() => <Popup>You clicked me!</Popup>} > 
-            </Marker>
-            <Marker opacity='1' icon={iconPerson} position={this.state.stores[1]}></Marker>  
+            {this.displayMarkers()}
+
+            <Marker opacity='1' icon={iconPerson2} position={{
+              lat: 33.6518307,
+              lng: 73.1544046
+              }}
+                 
+     ><Popup>
+     This is Comsats University.
+   </Popup> 
+     </Marker>
         </Map>
     </div>
-
-
-      </div>
     );
+
   }
+
+  componentWillMount(){
+
+    var config = {
+        headers: {'Authorization': "bearer " + localStorage.getItem('token')}
+    };
+
+    var bodyParameters = {
+      key: "value"
+    }
+    axios.post( 
+      '/api/admin/getAllBusesLocation',
+      bodyParameters,
+      config
+    ).then((response) => {
+      let locationsAsResponse=[];
+      response.data.forEach(element => {
+        locationsAsResponse.push({
+          busNumber:element.busNumber,
+          lat:element.location[0],
+          lng:element.location[1]
+        })    
+      })
+     this.setState({stores:locationsAsResponse})   
+    }) 
+    .catch((error) => {
+      console.log(error)
+    });
+}
+componentWillUpdate(){
+  setTimeout(function(){
+    
+    var config = {
+      headers: {'Authorization': "bearer " + localStorage.getItem('token')}
+  };
+
+  var bodyParameters = {
+    key: "value"
+  }
+  axios.post( 
+    '/api/admin/getAllBusesLocation',
+    bodyParameters,
+    config
+  ).then((response) => {
+    let locationsAsResponse=[];
+    response.data.forEach(element => {
+      locationsAsResponse.push({
+        busNumber:element.busNumber,
+        lat:element.location[0],
+        lng:element.location[1]
+      })    
+    })
+   this.setState({stores:locationsAsResponse})   
+  }) 
+  .catch((error) => {
+    console.log(error)
+  });
+    }.bind(this),5000);
+}
 }
 
-export default Map;
+export default Mapp;

@@ -18,7 +18,7 @@ import ComplainResponse from "./ComplainResponse";
 import ViewDriverComplains from "./ViewDriverComplains";
 import ViewPlans from "./ViewPlans";
 import AddBuses from './AddBuses';
-import Mapp from "../student/homeComponents/Map";
+import Mapp from "./Map";
 import ViewBus from "./ViewBus";
 import BusesFuel from "./BusesFuel";
 import Graph from "./Graph";

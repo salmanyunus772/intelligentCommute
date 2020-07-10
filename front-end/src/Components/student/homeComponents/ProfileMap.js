@@ -9,9 +9,9 @@ import {
 export default class ProfileMap extends Component {
   state = {
     directions: null,
-    
     origin:[33.6518307,73.1544046],
     destination:[33.6518307,73.1544046],
+    position:[],
     waypoints:[[33.6396671,73.038332],[33.6429102,73.0659414],[33.6314228,73.070461],[33.611013,73.0633077],[33.5953144,73.0427652]]
   };
   //const origin = { lat: 40.756795, lng: -73.954298 };

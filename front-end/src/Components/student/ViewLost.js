@@ -7,7 +7,7 @@ import ReactNotification from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
 import { store } from "react-notifications-component";
 import Img from 'react-image';
-import { faTrashAlt,faReply } from "@fortawesome/free-solid-svg-icons";
+import { faTrashAlt,faReply,faImage } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
@@ -18,12 +18,18 @@ export default class ViewLost extends React.Component{
         this.DeletePost=this.DeletePost.bind(this);
         this.respond=this.respond.bind(this);
         this.sendR=this.sendR.bind(this);
+        this.onChangeimg=this.onChangeimg.bind(this);
         this.state={ 
             _id:'',
             stdreg:'',
             LostFoundResponse:'',
+            img:null,
             lostfoundArray:[] };
-    }          
+    }
+    
+    onChangeimg(e){
+      this.setState({ img: e.target.files[0] });
+    }
     componentDidMount(){
       var config = {
         headers: { Authorization: "bearer " + localStorage.getItem("token") }
@@ -33,7 +39,7 @@ export default class ViewLost extends React.Component{
         axios
         .post("/api/student/viewlost",bodyParameters,config)
         .then(response => {
-          console.log('responseeeee',response)
+          
              this.setState({ lostfoundArray:response.data.findlostitem})
              this.setState({stdreg:response.data.regis_no})
         })
@@ -47,17 +53,20 @@ export default class ViewLost extends React.Component{
     }
     sendR(_id){
       if (this.state.LostFoundResponse.length>=10) {
-       var bodyParameters = {
-        LostFoundResponse:this.state.LostFoundResponse,
-        _id:this.state._id,
-        stdreg:this.state.stdreg
-       };
-        axios
-          .post("/api/student/lostfoundresponse",
-          bodyParameters,
-          ) 
-           .then(response => {
-             store.addNotification({
+        if(this.state.img != null){
+          var config = {
+            headers: {  'content-type':'multipart/form-data', Authorization: "bearer " + localStorage.getItem("token") }
+         };
+        const formResponseData = new FormData();
+        formResponseData.append("id", this.state._id);
+        formResponseData.append("reply", this.state.LostFoundResponse);
+        formResponseData.append("image", this.state.img);
+          axios
+            .post("/api/student/replylostfoundwithimage",
+            formResponseData,
+            config) 
+            .then(response => {
+               store.addNotification({
                  title: "Success",
                  message: response.data.message,
                  type: "success",
@@ -75,7 +84,7 @@ export default class ViewLost extends React.Component{
                console.log(error);
              store.addNotification({
                  title: "Error",
-                 message: "Not Sent",
+                 message: "Not Posted",
                  type: "danger",
                  insert: "top",
                  container: "top-right",
@@ -88,23 +97,55 @@ export default class ViewLost extends React.Component{
            });
    
          })
-     }
-     else{
-      store.addNotification({
-        title: "Error",
-        message: "Response Should be Descriptive",
-        type: "danger",
-        insert: "top",
-        container: "top-right",
-        animationIn: ["animated", "fadeIn"],
-        animationOut: ["animated", "fadeOut"],
-        dismiss: {
-          duration: 5000,
-          onScreen: true
         }
-  })
+        else{
+          var config = {
+            headers: {  'content-type':'multipart/form-data', Authorization: "bearer " + localStorage.getItem("token") }
+         };
+        const formResponseData = new FormData();
+        formResponseData.append("id", this.state._id);
+        formResponseData.append("reply", this.state.LostFoundResponse);
+        formResponseData.append("image", this.state.img);
+          axios
+            .post("/api/student/replylostfoundwithoutimage",
+            formResponseData,
+            config) 
+            .then(response => {
+               store.addNotification({
+                 title: "Success",
+                 message: response.data.message,
+                 type: "success",
+                 insert: "top",
+                 container: "top-right",
+                 animationIn: ["animated", "fadeIn"],
+                 animationOut: ["animated", "fadeOut"],
+                 dismiss: {
+                   duration: 5000,
+                   onScreen: true
+                 }
+           })
+         })
+           .catch(error => {
+               console.log(error);
+             store.addNotification({
+                 title: "Error",
+                 message: "Not Posted",
+                 type: "danger",
+                 insert: "top",
+                 container: "top-right",
+                 animationIn: ["animated", "fadeIn"],
+                 animationOut: ["animated", "fadeOut"],
+                 dismiss: {
+                   duration: 5000,
+                   onScreen: true
+                 }
+           });
+   
+         })
+        }
      }
-    }
+    }     
+  
     DeletePost(idDel){
       var bodyParameters = {
         _id:idDel
@@ -215,10 +256,12 @@ export default class ViewLost extends React.Component{
                               </button>
                             </div>
                             <div className="modal-body">
-                            <Form.Control as="textarea" rows="3" onChange={this.respond}/>
+                            <Form.Control as="textarea" rows="3" id="reply" onChange={this.respond}/>
                             </div>
                             <div className="modal-footer">
                               <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                    
+                              <input type='file' id="image" onChange={this.onChangeimg}/>
                               <button type="button" className="btn btn-primary" onClick={()=>{this.sendR(this.state._id)}}>Send Response</button>
                             </div>
                           </div>
