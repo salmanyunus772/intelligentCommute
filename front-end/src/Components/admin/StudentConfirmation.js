@@ -23,7 +23,8 @@ const StudentConfirmation = props => {
     };
     axios
       .post(
-        "http://localhost:3000/api/admin/confirmStudent",
+        // http://localhost:3000
+        "/api/admin/confirmStudent",
         bodyParameters,
         config
       )
@@ -102,7 +103,8 @@ const StudentConfirmation = props => {
     var bodyParameters = {};
     axios
       .get(
-        "http://localhost:3000/api/admin/getConfirmStatus",
+        // http://localhost:3000
+        "/api/admin/getConfirmStatus",
         bodyParameters,
         config
       )

@@ -46,7 +46,8 @@ export default class AddBuses extends React.Component {
       var bodyParameters = {};
       axios
         .get(
-          "http://localhost:3000/api/admin/getAllBuses",
+          // http://localhost:3000
+          "/api/admin/getAllBuses",
           bodyParameters,
           config
         )

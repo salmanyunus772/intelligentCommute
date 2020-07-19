@@ -47,7 +47,8 @@ export default class Recover extends React.Component {
       if(this.verifyPassword()){      
       this.setState({ loading: true  });
       axios
-        .post("http://localhost:3000/api/student/newrecover", {
+      // http://localhost:3000
+        .post("/api/student/newrecover", {
           email:this.state.email,
           password:this.state.password
         })

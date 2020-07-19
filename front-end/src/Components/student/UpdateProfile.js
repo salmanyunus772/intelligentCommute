@@ -44,7 +44,8 @@ export default class UpdateProfile extends Component {
      };
      axios
        .post(
-         "http://localhost:3000/api/student/viewProfile",
+        // http://localhost:3000
+         "/api/student/viewProfile",
          bodyParameters,
          config
        )

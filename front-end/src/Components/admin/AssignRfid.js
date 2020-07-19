@@ -29,7 +29,8 @@ export default class AdminRoutes extends React.Component {
     var bodyParameters = {};
     axios
       .get(
-        "http://localhost:3000/api/admin/studentsWithoutRfid",
+        // http://localhost:3000
+        "/api/admin/studentsWithoutRfid",
         bodyParameters,
         config
       )
@@ -68,7 +69,8 @@ export default class AdminRoutes extends React.Component {
             };
             axios
               .post(
-                "http://localhost:3000/api/admin/assignRfid",
+                // http://localhost:3000
+                "/api/admin/assignRfid",
                 bodyParameters,
                 config
               )

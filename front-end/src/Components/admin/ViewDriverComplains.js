@@ -26,7 +26,7 @@ export default class ViewDriverComplains extends React.Component{
         axios
         .get("/api/admin/viewdrivercomplains")
         .then(response => {
-          console.log('dddddddddddddd',response)
+          
             this.setState({ drivercomplainArray:response.data.d_complains})
 
         })

@@ -96,9 +96,8 @@ export default class GuestStudents extends React.Component {
       this.setState({ loading:true });
       
     axios.post("/api/student/guestChart",{stop:this.state.stop}).then(response => {
-      console.log('ur response')
-      console.log(response)
       this.setState({countArray:[]})
+      this.setState({avgArray:[]})
        var data=response.data
       data.forEach((temp)=>{
             this.state.dateArray.push(temp.date);

@@ -29,7 +29,8 @@ export default class driverProfile extends Component {
    };
    axios
      .post(
-       "http://localhost:3000/api/driver/viewProfile",
+      // http://localhost:3000
+       "/api/driver/viewProfile",
        bodyParameters,
        config
      )
@@ -77,7 +78,8 @@ export default class driverProfile extends Component {
       cell:this.state.cell
     };
       axios
-      .post("http://localhost:3000/api/driver/updatedrivercontact", 
+      // http://localhost:3000
+      .post("/api/driver/updatedrivercontact", 
         bodyParameters,config)
         .then(response => {
           store.addNotification({

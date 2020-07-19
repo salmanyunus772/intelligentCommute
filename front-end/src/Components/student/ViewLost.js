@@ -201,8 +201,8 @@ export default class ViewLost extends React.Component{
                 <td>{element.date}</td>
                 <td>{element.type}</td>
                 <td >{element.description}</td> 
-                
                 {/* http://localhost:3001 */}
+                {/*  https://intelligent-commute.herokuapp.com*/}
                 <td><Img src={`https://intelligent-commute.herokuapp.com/image/${element.img}`} style={{width:'150px',height:'150px'}}/></td>
             <td>{element.stdresponses}</td>
                 {/* <td>    
@@ -223,7 +223,8 @@ export default class ViewLost extends React.Component{
                   <td>{element.from}</td>
                   <td>{element.date}</td>
                   <td>{element.type}</td>
-                  <td >{element.description}</td> 
+                  <td >{element.description}</td>
+                  {/* http://localhost:3001  */}
                   <td><Img src={`https://intelligent-commute.herokuapp.com/image/${element.img}`} style={{width:'150px',height:'150px'}}/></td>
                   {/* <td>{element.stdresponses}</td> */}
                   <td>    

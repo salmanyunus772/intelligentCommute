@@ -28,7 +28,8 @@ export default class RoutesAssign extends React.Component {
     }
     UNSAFE_componentWillMount() {
       axios.get(
-      "http://localhost:3000/api/admin/getAllBuses")
+        // http://localhost:3000
+      "/api/admin/getAllBuses")
     .then(response => {
         let uniBus=[]
        response.data.uniBus.forEach(element => {
@@ -44,7 +45,8 @@ export default class RoutesAssign extends React.Component {
     });
 
     axios.get(
-      "http://localhost:3000/api/admin/getAllRoutes")
+      // http://localhost:3000
+      "/api/admin/getAllRoutes")
     .then(response => {
       console.log('these are the routes id');
       console.log(response);

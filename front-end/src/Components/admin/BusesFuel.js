@@ -25,7 +25,8 @@ export default class BusesFuel extends React.Component {
 }
 UNSAFE_componentWillMount() {
     axios.get(
-    "http://localhost:3000/api/admin/getAllBuses")
+      // http://localhost:3000
+    "/api/admin/getAllBuses")
   .then(response => {
       let uniBus=[]
      response.data.uniBus.forEach(element => {
@@ -75,7 +76,8 @@ OnSubmit(){
         fillingDate:this.state.fillingDate
     }
 };
-    axios.post('http://localhost:3000/api/admin/busFuelAdd',bodyParameters)
+// http://localhost:3000
+    axios.post('/api/admin/busFuelAdd',bodyParameters)
     .then(()=>{
       store.addNotification({
         title: "Fuel Record Saved",

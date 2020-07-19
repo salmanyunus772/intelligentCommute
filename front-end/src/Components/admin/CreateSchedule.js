@@ -26,7 +26,8 @@ export default class CreateSchedule extends React.Component {
   UNSAFE_componentWillMount() {
     axios
     .get(
-      "http://localhost:3000/api/admin/getAllDriversbyName")
+      // http://localhost:3000
+      "/api/admin/getAllDriversbyName")
     .then(response => {
         let drivers=[]
        response.data.drivers.forEach(element => {
@@ -41,7 +42,8 @@ export default class CreateSchedule extends React.Component {
     });
     axios
     .get(
-      "http://localhost:3000/api/admin/getAllBuses")
+      // http://localhost:3000
+      "/api/admin/getAllBuses")
     .then(response => {
         let uniBus=[]
        response.data.uniBus.forEach(element => {
@@ -82,8 +84,8 @@ export default class CreateSchedule extends React.Component {
           //   headers: { Authorization: "bearer " + localStorage.getItem("token") }
           };
         let bodyParameters={schedule:{driverId:this.state.driverId,routeId:this.state.routeId,busNumber:this.state.busNumber,startingDate:startDate.toISOString(),endingDate:this.state.endingDate}}
-    
-        axios.post('http://localhost:3000/api/admin/createSchedule',bodyParameters,config)
+        // http://localhost:3000
+        axios.post('/api/admin/createSchedule',bodyParameters,config)
       .then(()=>{
         store.addNotification({
           title: "Driver Schedule Assigned.",

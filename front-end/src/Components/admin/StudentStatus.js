@@ -21,7 +21,8 @@ const StudentStatus = props => {
     };
     axios
       .post(
-        "http://localhost:3000/api/admin/extendService",
+        // http://localhost:3000
+        "/api/admin/extendService",
         bodyParameters,
         config
       )
@@ -103,7 +104,8 @@ const StudentStatus = props => {
     var bodyParameters = {};
     axios
       .get(
-        "http://localhost:3000/api/admin/getStudentStatus",
+        // http://localhost:3000
+        "/api/admin/getStudentStatus",
         bodyParameters,
         config
       )
