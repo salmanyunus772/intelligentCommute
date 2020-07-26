@@ -5,7 +5,7 @@ import RecoverComponent from "./recoverComponent";
 import ReactNotification from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
 import { store } from "react-notifications-component";
-import Loading from "./Loading";
+import Loading from "./css/Loading";
 import { Link } from "react-router-dom";
 
 export default class Recover extends React.Component {

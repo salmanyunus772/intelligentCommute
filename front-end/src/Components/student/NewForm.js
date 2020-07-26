@@ -2,7 +2,7 @@ import React from "react";
 import "./css/register.css";
 import NewFormComponent from "./NewFormComponent";
 import axios from "axios";
-import Loading from "./Loading";
+import Loading from "./css/Loading";
 import ReactNotification from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
 import { store } from "react-notifications-component";

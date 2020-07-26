@@ -6,7 +6,7 @@ import SignInComponent from "./SignInComponent";
 import ReactNotification from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
 import { store } from "react-notifications-component";
-import Loading from "./Loading";
+import Loading from "./css/Loading";
 import { Link } from "react-router-dom";
 import { setTimeout } from "timers";
 

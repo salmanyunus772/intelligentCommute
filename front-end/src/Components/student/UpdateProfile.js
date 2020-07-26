@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Col, Nav } from 'react-bootstrap';
+import { Form, Col, Nav, Container } from 'react-bootstrap';
 import axios from 'axios';
 import NavLink from 'react-bootstrap/NavLink';
 import Profile from "./homeComponents/Profile";
@@ -73,13 +73,13 @@ export default class UpdateProfile extends Component {
       return (
         // Important! Always set the container height explicitly
         <div style={{ height: '80vh',borderRadius:10, width: '80%',margin:'50px auto',padding:20,background:'white' }}>
-        
+        {/* <Container> */}
         <Profile
             onChangeEmail={this.onChangeEmail}
             onChangeBus={this.onChangeBus}
         
         />
-    
+    {/* </Container> */}
         </div>
       );
      

@@ -6,7 +6,7 @@ import { store } from "react-notifications-component";
 import ReactNotification from "react-notifications-component";
 import { Navbar, Nav,Container,Row,Col } from "react-bootstrap";
 import { Button } from "react-bootstrap";
-import Loading from "./Loading";
+import Loading from "./css/Loading";
 
 
 export default class GuestStudents extends React.Component {

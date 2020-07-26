@@ -199,9 +199,9 @@ export default class DriverViewlost extends React.Component{
                 <td>{element.date}</td>
                 <td>{element.type}</td>
                 <td >{element.description}</td> 
-                {/* http://localhost:3001 */}
                 
-                <td><Img src={`https://intelligent-commute.herokuapp.com/image/${element.img}`} style={{width:'150px',height:'150px'}}/></td>
+                {/* https://intelligent-commute.herokuapp.com */}
+                <td><Img src={`http://localhost:3001/image/${element.img}`} style={{width:'150px',height:'150px'}}/></td>
                 <td></td>
                 {/* <td>    
             <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onClick={()=>{
@@ -223,7 +223,7 @@ export default class DriverViewlost extends React.Component{
                   <td>{element.type}</td>
                   <td >{element.description}</td> 
                   {/* http://localhost:3001 */}
-                  <td><Img src={`https://intelligent-commute.herokuapp.com/image/${element.img}`} style={{width:'150px',height:'150px'}}/></td>
+                  <td><Img src={`http://localhost:3001/image/${element.img}`} style={{width:'150px',height:'150px'}}/></td>
                   {/* <td><Img src="http://localhost:3001/image/bus.png"/></td> */}
                   <td>    
             <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onClick={()=>{

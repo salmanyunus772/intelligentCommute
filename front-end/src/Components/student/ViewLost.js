@@ -2,7 +2,7 @@ import React from "react";
 import "./css/register.css";
 import {Button,Table,Form }  from "react-bootstrap";
 import axios from "axios";
-import Loading from "./Loading";
+import Loading from "./css/Loading";
 import ReactNotification from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
 import { store } from "react-notifications-component";
@@ -203,7 +203,7 @@ export default class ViewLost extends React.Component{
                 <td >{element.description}</td> 
                 {/* http://localhost:3001 */}
                 {/*  https://intelligent-commute.herokuapp.com*/}
-                <td><Img src={`https://intelligent-commute.herokuapp.com/image/${element.img}`} style={{width:'150px',height:'150px'}}/></td>
+                <td><Img src={`http://localhost:3001/image/${element.img}`} style={{width:'150px',height:'150px'}}/></td>
             <td>{element.stdresponses}</td>
                 {/* <td>    
             <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onClick={()=>{
@@ -224,8 +224,8 @@ export default class ViewLost extends React.Component{
                   <td>{element.date}</td>
                   <td>{element.type}</td>
                   <td >{element.description}</td>
-                  {/* http://localhost:3001  */}
-                  <td><Img src={`https://intelligent-commute.herokuapp.com/image/${element.img}`} style={{width:'150px',height:'150px'}}/></td>
+                  {/* https://intelligent-commute.herokuapp.com */}
+                  <td><Img src={`http://localhost:3001/image/${element.img}`} style={{width:'150px',height:'150px'}}/></td>
                   {/* <td>{element.stdresponses}</td> */}
                   <td>    
             <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onClick={()=>{

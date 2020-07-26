@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Form, Col, Nav,Button } from 'react-bootstrap';
 import axios from 'axios';
 import NavLink from 'react-bootstrap/NavLink';
-import Loading from "../Loading";
+import Loading from "../css/Loading";
 import ReactNotification from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
 import { store } from "react-notifications-component";

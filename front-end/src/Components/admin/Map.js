@@ -102,7 +102,7 @@ class Mapp extends Component {
           lng:element.location[1]
         })    
       })
-     this.setState({stores:locationsAsResponse})   
+     this.setState({stores:locationsAsResponse})
     }) 
     .catch((error) => {
       console.log(error)

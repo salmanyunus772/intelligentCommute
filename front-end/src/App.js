@@ -1,7 +1,7 @@
 import React from "react";
 import "normalize.css";
 import "./Components/css/global.css";
-// import 'bootswatch/dist/darkly/bootstrap.min.css'; 
+// import 'bootswatch/dist/superhero/bootstrap.min.css'; 
 import "./Components/css/style.css";
 import { createBrowserHistory } from 'history'
 

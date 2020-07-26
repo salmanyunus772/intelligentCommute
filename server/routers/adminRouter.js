@@ -27,14 +27,34 @@ adminRouter.post("/addNotification", (req, res, next) => {
   })
 });
 adminRouter.post("/addBus", (req, res, next) => {
-  db.addBus({busNumber:req.body.busNumber,noOfSeats:req.body.noOfSeats,occupiedSeats:req.body.occupiedSeats}).then(()=>{
-    res.json({message:'Bus has been Registered'});
-  })
+  db.getAllBuses().then((doc)=>{
+    let allBuses=[];
+    doc.forEach(element => { 
+      allBuses.push(element.busNumber);
+    });
+    let a1=req.body.busNumber.toUpperCase();
+    let a2=req.body.busNumber.toLowerCase();
+    if(allBuses.includes(a1) || allBuses.includes(a2)){
+      res.json({message:'Already Registered'});
+    }
+    else{
+      db.addBus({busNumber:req.body.busNumber,noOfSeats:req.body.noOfSeats,occupiedSeats:req.body.occupiedSeats,location:[33.6518307,73.1544046]}).then(()=>{
+      res.json({message:'Bus has been Registered'});
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(400).json({ error:err });
+    });
+  }
+    
+})
   .catch(err => {
     console.log(err);
     res.status(400).json({ error:err });
   });
-});
+  
+  
+  });
 
 adminRouter.post("/postNews",(req,res) => {
   db.addNews({date:Date.now(),news:req.body.news})
@@ -220,8 +240,7 @@ adminRouter.post("/getAllBusesLocation",validate.token, (req, res, next) => {
         busNumber:element.busNumber
       })
     })
-    
-    res.json(busLocations)
+     res.json(busLocations)
   })
   .catch(()=>{
        res.status(500).json({error:"Server error"});

@@ -103,7 +103,8 @@ module.exports = {
     let bus={
       busNumber:data.busNumber,
       noOfSeats:data.noOfSeats,
-      occupiedSeats:data.occupiedSeats
+      occupiedSeats:data.occupiedSeats,
+      location:data.location
     };
     let buses=new Bus(bus); 
     return buses.save();

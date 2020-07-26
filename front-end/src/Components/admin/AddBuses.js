@@ -146,7 +146,23 @@ export default class AddBuses extends React.Component {
              bodyParameters,
              ) 
               .then(response => {
-                store.addNotification({
+                if(response.data.message=="Already Registered"){
+                  store.addNotification({
+                    title: "Error",
+                    message: "Bus Already Registered",
+                    type: "danger",
+                    insert: "top",
+                    container: "top-right",
+                    animationIn: ["animated", "fadeIn"],
+                    animationOut: ["animated", "fadeOut"],
+                    dismiss: {
+                      duration: 5000,
+                      onScreen: true
+                    }
+              })
+                }
+                else{
+                  store.addNotification({
                     title: "Success",
                     message: response.data.message,
                     type: "success",
@@ -159,12 +175,12 @@ export default class AddBuses extends React.Component {
                       onScreen: true
                     }
               })
-            })
+            }
+          })
               .catch(error => {
-                  console.log(error);
                 store.addNotification({
                     title: "Error",
-                    message: "Not Sent",
+                    message: "Something went wrong",
                     type: "danger",
                     insert: "top",
                     container: "top-right",
